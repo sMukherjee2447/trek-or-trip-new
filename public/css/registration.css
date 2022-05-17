@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url("reg.jpg") no-repeat;
+    background-size: inherit;
+    background-position: -400px 0px;
+}
+
+.registration {
+    width: 400px;
+    margin: 50px auto 0px auto;
+}
+
+h1 {
+    padding: 20px;
+    text-align: center;
+}
+
+.panel {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.form-group {
+    margin: 40px;
+}
+
+label {
+    font-size: 18px;
+    font-style: italic;
+}
+
+input {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    background-color: #fff;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+button {
+    width: 200px;
+    padding: 7px;
+    font-size: 16px;
+    font-weight: 600px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+
+.panel-footer {
+    margin-left: 35%;
+}
+.panel-footer-back{
+    margin-left: 25%;
+}
+
+.panel-footer-back a{
+    color: mistyrose;
+}

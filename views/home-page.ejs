@@ -5,8 +5,36 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title><%= title %></title>
+
+        <link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet" />
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
+            rel="stylesheet" />
+
+        <link rel="stylesheet" href="font-awesome.min.css" />
+        <link rel="stylesheet" href="animate.css" />
+        <link rel="stylesheet" href="hover-min.css">
+
+        <!--owl.carousel.css-->
+        <link rel="stylesheet" href="owl.carousel.min.css">
+        <link rel="stylesheet" href="owl.theme.default.min.css" />
+
+        <link rel="stylesheet" href="jquery-ui.min.css" />
+        <link rel="stylesheet" href="bootstrap.min.css" />
+        <link rel="stylesheet" href="bootsnav.css" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="responsive.css" />
     </head>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+        body {
+            font-family: poppins;
+        }
+
+    </style>
 
     <body>
         <!-- main-menu start -->
@@ -131,14 +159,258 @@
                             </div>
                             <div class="service-content">
                                 <h2>
-                                    <a href="#"></a>
+                                    <a href="#">
+                                        amazing tour packages
+                                    </a>
                                 </h2>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem alias commodi eum
+                                    perferendis incidunt. Ipsa necessitatibus veritatis quis ut culpa.</p>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                        <div class="single-service-box">
+                            <div class="service-img">
+                                <img src="s2.png" alt="service-icon" />
+                            </div>
+                            <div class="service-content">
+                                <h2>
+                                    <a href="#">
+                                        book top class hotel
+                                    </a>
+                                </h2>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque eligendi harum
+                                    soluta?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="single-service-box">
+                            <div class="statistics-img">
+                                <img src="s3.png" alt="service-icon" />
+                            </div>
+                            <!--/.service-img-->
+                            <div class="service-content">
+
+                                <h2>
+                                    <a href="#">
+                                        online flight booking
+                                    </a>
+                                </h2>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta!</p>
+                            </div>
+                            <!--/.service-content-->
+                        </div>
+                        <!--/.single-service-box-->
                     </div>
                 </div>
             </div>
         </section>
+
+        <%- include('./includes/gallery.ejs'); %>
+
+        <section id="pack" class="packages">
+            <div class="container">
+                <div class="gallary-header text-center">
+                    <h2>
+                        special packages
+                    </h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, officia?
+                    </p>
+                </div>
+                <!--/.gallery-header-->
+                <div class="packages-content">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single-package-item">
+                                <img src="" alt="package-place">
+                                <div class="single-package-item-txt">
+                                    <h3>
+                                        <span class="pull-right">
+
+                                        </span>
+                                    </h3>
+                                    <div class="packages-para">
+                                        <p>
+                                            <span>
+                                                <i class="fa fa-angle-right"></i>
+
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span>
+                                                <i class="fa fa-angle-right"></i>
+
+                                            </span>
+                                            <i class="fa fa-angle-right"></i>
+
+                                        </p>
+                                    </div>
+                                    <!--/.packages-para-->
+                                    <div class="packages-review">
+                                        <p>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <span>2544 review</span>
+                                        </p>
+                                    </div>
+                                    <!--/.packages-review-->
+                                    <div class="about-btn">
+                                        <button onclick="location.href = '#';" class="about-view packages-btn">
+                                            Read More
+                                        </button>
+                                    </div>
+                                    <!--/.about-btn-->
+                                </div>
+                                <!--/.single-package-item-txt-->
+                            </div>
+                            <!--/.single-package-item-->
+
+                        </div>
+                        <!--/.col-->
+
+
+                    </div>
+                    <!--/.row-->
+                </div>
+                <!--/.packages-content-->
+            </div>
+            <!--/.container-->
+
+        </section>
+
+        <section class="testemonial">
+            <div class="container">
+
+                <div class="gallary-header text-center">
+                    <h2>
+                        clients reviews
+                    </h2>
+                    <p>
+                        Clients have given us their awesome reviews
+                    </p>
+
+
+                </div>
+                <!--/.gallery-header-->
+
+                <div class="owl-carousel owl-theme" id="testemonial-carousel">
+                    <div class="home1-testm item">
+                        <div class="home1-testm-single text-center">
+                            <div class="home1-testm-img">
+                                <img src="" alt="img" />
+                            </div>
+                            <!--/.home1-testm-img-->
+                            <div class="home1-testm-txt">
+                                <span class="icon section-icon">
+                                    <h5>
+
+                                    </h5>
+                                </span>
+                                <p>
+
+                                </p>
+                                <h3>
+                                    <a href="#">
+
+                                    </a>
+                                </h3>
+                                <h4>
+
+                                </h4>
+                            </div>
+                            <!--/.home1-testm-txt-->
+                        </div>
+                        <!--/.home1-testm-single-->
+
+                    </div>
+
+                    <!--/.item-->
+                </div>
+                <div class="viewall">
+                    <a href="/Rev">View All >> </a>
+                </div>
+
+                <!--/.testemonial-carousel-->
+            </div>
+            <!--/.container-->
+
+
+        </section>
+
+        <section id="subs" class="subscribe">
+            <div class="container">
+                <div class="subscribe-title text-center">
+                    <h2>
+                        Join Us to experience the amazing beauty of the world
+                    </h2>
+                    <p>
+                        Join Now. We will send you Best offer for your Trip
+                    </p>
+                </div>
+
+            </div>
+            <form>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                        <div class="custom-input-group">
+
+                            <input type="email" class="form-control" placeholder="Enter your Email Here" name="email">
+                            <button class="appsLand-btn subscribe-btn" type="submit">Subscribe</button>
+                            <div class="clearfix"></div>
+                            <i class="fa fa-envelope"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <%- include('./includes/footer.ejs'); %>
+
+        <script src="jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+        <!--modernizr.min.js-->
+        <script src="modernizr.min.js"></script>
+
+
+        <!--bootstrap.min.js-->
+        <script src="bootstrap.min.js"></script>
+
+        <!-- bootsnav js -->
+        <script src="bootsnav.js"></script>
+
+        <!-- jquery.filterizr.min.js -->
+        <script src="jquery.filterizr.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+        <!--jquery-ui.min.js-->
+        <script src="jquery-ui.min.js"></script>
+
+        <!-- counter js -->
+        <script src="jquery.counterup.min.js"></script>
+        <script src="waypoints.min.js"></script>
+
+        <!--owl.carousel.js-->
+        <script src="owl.carousel.min.js"></script>
+
+        <!-- jquery.sticky.js -->
+        <script src="jquery.sticky.js"></script>
+
+        <!--datepicker.js-->
+        <script src="datepicker.js"></script>
+
+        <!--Custom JS-->
+        <script src="custom.js"></script>
+
     </body>
 
 </html>
