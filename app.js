@@ -7,7 +7,15 @@ const bodyParser = require('body-parser')
 var createError = require('http-errors');
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
-// const User = require('../models/user')
+const User = require('./models/user')
+const jwt = require('jsonwebtoken')
+
+mongoose.connect("mongodb+srv://subham:subham@cluster0.ojwma.mongodb.net/trek-or-trip", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => console.log('connected on app.js'))
+  .catch(e => console.log(e));
 
 
 const app = express()
@@ -16,13 +24,14 @@ const port = 3000
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-var database
+
 
 app.use(express.json());
 app.use(express.urlencoded({
   extended: false
 }));
 app.use(cookieParser())
+app.use(express.json())
 app.use(logger('dev'));
 
 app.use(express.static(path.join(__dirname, 'public/images')));
@@ -33,6 +42,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+
+
 
 // app.get('/', (req, res) => {
 //   res.render('landing-page.ejs')
@@ -50,6 +62,52 @@ app.use('/sign-in', signinRouter)
 
 var registrationRouter = require('./routes/registration-page')
 app.use('/registration', registrationRouter)
+// const auth = async (req, res, next) => {
+//   try {
+//     const token = req.cookies.JWT
+//     const verifyUser = jwt.verify(token, process.env.JWT_SECRET)
+//     console.log(verifyUser);
+
+//     const user_data = await User.findOne({
+//       register_token: verifyUser.token
+//     })
+//     console.log(user_data)
+
+//     req.token = token
+//     req.user_data = user_data
+
+//     next()
+//   } catch (error) {
+//     res.status(401).send(error)
+//   }
+// }
+
+
+app.get("/logout", async (req, res) => {
+
+  const token = req.cookies.JWT
+  const verifyUser = jwt.verify(token, process.env.JWT_SECRET)
+  console.log(verifyUser)
+
+  const user_data = await User.findOne({
+    register_token: verifyUser.token
+  })
+  console.log(user_data)
+  req.token = token
+  req.user_data = user_data
+  try {
+    res.clearCookie("JWT")
+
+    console.log("logout successful")
+
+    // await req.user_data.save()
+
+    res.redirect('/')
+
+  } catch (error) {
+    res.status(500).send(error)
+  }
+})
 
 
 app.use(function (req, res, next) {

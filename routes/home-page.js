@@ -1,12 +1,22 @@
+require('dotenv').config()
 const express = require('express')
 const MongoClient = require('mongodb').MongoClient
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const jwt = require('jsonwebtoken')
+const User = require('../models/user')
 
 var app = express()
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(cookieParser())
+app.use(express.json())
+app.use(function (req, res, next) {
+    req.header("Content-Type", "text/html");
+    next();
+});
 
 var router = express.Router()
 var database
@@ -19,10 +29,42 @@ const connection = MongoClient.connect('mongodb+srv://subham:subham@cluster0.ojw
     database = result.db('trek-or-trip')
     console.log('Database Connected to home-page')
 })
+// const auth = async (req, res, next) => {
+//     try {
+//         const token = req.cookies.JWT
+//         const verifyUser = jwt.verify(token, process.env.JWT_SECRET)
+//         console.log(verifyUser);
 
+//         const user_data = await User.findOne({
+//             register_token: verifyUser.token
+//         })
+//         console.log(user_data)
 
+//         req.token = token
+//         req.user_data = user_data
+
+//         next()
+//     } catch (error) {
+//         res.status(401).send(error)
+//     }
+// }
 
 router.get('/', async (req, res) => {
+    try {
+
+        const token = req.cookies.JWT
+        const verifyUser = jwt.verify(token, process.env.JWT_SECRET)
+        console.log(verifyUser)
+
+        const user_data = await User.findOne({
+            register_token: verifyUser.token
+        })
+        console.log(user_data)
+        req.token = token
+        req.user_data = user_data
+    } catch (error) {
+        res.send("<h1>YOU NEED TO LOGIN FIRST<h1>")
+    }
 
     place_data = await database.collection('Place_Table').find({}).toArray(async (err, result_placeData) => {
         if (err) throw err
