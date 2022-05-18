@@ -224,29 +224,30 @@
                 <!--/.gallery-header-->
                 <div class="packages-content">
                     <div class="row">
+                        <% for (let data of special_package_data) { %>
                         <div class="col-md-4 col-sm-6">
                             <div class="single-package-item">
-                                <img src="" alt="package-place">
+                                <img src="/<%-data.cover%>" alt="package-place">
                                 <div class="single-package-item-txt">
                                     <h3>
-                                        <span class="pull-right">
-
+                                        <%=data.place%><span class="pull-right">
+                                            <%=data.amount%>
                                         </span>
                                     </h3>
                                     <div class="packages-para">
                                         <p>
                                             <span>
                                                 <i class="fa fa-angle-right"></i>
-
+                                                <%=data.stay%>
                                             </span>
                                         </p>
                                         <p>
                                             <span>
                                                 <i class="fa fa-angle-right"></i>
-
+                                                <%=data.transportation%>
                                             </span>
                                             <i class="fa fa-angle-right"></i>
-
+                                            <%=data.facility%>
                                         </p>
                                     </div>
                                     <!--/.packages-para-->
@@ -273,6 +274,7 @@
                             <!--/.single-package-item-->
 
                         </div>
+                        <% } %>
                         <!--/.col-->
 
 
@@ -301,28 +303,29 @@
                 <!--/.gallery-header-->
 
                 <div class="owl-carousel owl-theme" id="testemonial-carousel">
+                    <% for (let data of feedback_data) { %>
                     <div class="home1-testm item">
                         <div class="home1-testm-single text-center">
                             <div class="home1-testm-img">
-                                <img src="" alt="img" />
+                                <img src="/<%- data.image %>" alt="img" />
                             </div>
                             <!--/.home1-testm-img-->
                             <div class="home1-testm-txt">
                                 <span class="icon section-icon">
                                     <h5>
-
+                                        <%- data.place %>
                                     </h5>
                                 </span>
                                 <p>
-
+                                    <%-data.review%>
                                 </p>
                                 <h3>
                                     <a href="#">
-
+                                        <%-data.customer%>
                                     </a>
                                 </h3>
                                 <h4>
-
+                                    <%- data.location%>
                                 </h4>
                             </div>
                             <!--/.home1-testm-txt-->
@@ -330,7 +333,7 @@
                         <!--/.home1-testm-single-->
 
                     </div>
-
+                    <% } %>
                     <!--/.item-->
                 </div>
                 <div class="viewall">

@@ -23,16 +23,22 @@
                 <div class="gallery-content">
                     <div class="filtr-container">
                         <div class="row">
+                            <% for(let data of place_data) { %>
                             <div class="col-md-6">
                                 <div class="filtr-item">
+                                    <img src="/<%- data.Cover %>" alt="#">
                                     <div class="item-title">
+                                        <a href="/category/<%-data.place_id %>">
+                                            <%-data.place %>
+                                        </a>
                                         </a>
                                         D<p><span>20 tours</span><span>15 places</span></p>
                                     </div>
                                 </div>
                             </div>
+                            <% } %>
 
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <div class="filtr-item">
                                     <img src="g2.jpg" alt="portfolio image" />
                                     <div class="item-title">
@@ -42,9 +48,9 @@
                                         <p><span>12 tours</span><span>9 places</span></p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                                 <div class="filtr-item">
                                     <img src="g3.jpg" alt="portfolio image" />
                                     <div class="item-title">
@@ -54,9 +60,9 @@
                                         <p><span>25 tours</span><span>10 places</span></p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                                 <div class="filtr-item">
                                     <img src="g4.jpg" alt="portfolio image" />
                                     <div class="item-title">
@@ -66,9 +72,9 @@
                                         <p><span>18 tours</span><span>9 places</span></p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                                 <div class="filtr-item">
                                     <img src="g5.jpg" alt="portfolio image" />
                                     <div class="item-title">
@@ -78,8 +84,8 @@
                                         <p><span>14 tours</span><span>12 places</span></p>
                                     </div>
                                 </div>
-                            </div>
-
+                            </div> -->
+                            <!-- 
                             <div class="col-md-12">
                                 <div class="filtr-item">
                                     <img src="g6.jpg" alt="portfolio image" />
@@ -90,7 +96,7 @@
                                         <p><span>14 tours</span><span>6 places</span></p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div><!-- /.row -->
 
@@ -107,7 +113,7 @@
 <!--/.gallery-->
 <!--gallery end-->
 
-<section id="gallery" class="gallery">
+<!-- <section id="gallery" class="gallery">
     <div class="container">
         <div class="gallery-details">
             <div class="gallary-header text-center">
@@ -206,4 +212,4 @@
     </div>
 
 
-</section>
+</section> -->
