@@ -20,6 +20,8 @@ const connection = MongoClient.connect('mongodb+srv://subham:subham@cluster0.ojw
     console.log('Database Connected to home-page')
 })
 
+
+
 router.get('/', async (req, res) => {
 
     place_data = await database.collection('Place_Table').find({}).toArray(async (err, result_placeData) => {
@@ -51,4 +53,5 @@ router.get('/', async (req, res) => {
         })
     })
 })
+
 module.exports = router

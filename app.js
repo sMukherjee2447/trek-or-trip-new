@@ -1,11 +1,13 @@
+require('dotenv').config()
 const express = require('express');
 const req = require('express/lib/request');
 var path = require('path');
 const bodyParser = require('body-parser')
 var createError = require('http-errors');
-
-// const MongoClient = require('mongodb').MongoClient
-const connection = require('./db-connect')
+const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser')
+// const User = require('../models/user')
+const bcrypt = require('bcryptjs')
 
 const app = express()
 const port = 3000
@@ -19,6 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: false
 }));
+app.use(cookieParser())
+
 app.use(express.static(path.join(__dirname, 'public/images')));
 app.use(express.static(path.join(__dirname, 'public/css')));
 app.use(express.static(path.join(__dirname, 'public/javascripts')));
@@ -39,8 +43,11 @@ app.use('/', indexRouter)
 var homeRouter = require('./routes/home-page');
 app.use('/home', homeRouter)
 
-var signinRouter = require('./routes/signin-page')
-app.use('/sign-in', signinRouter)
+// var signinRouter = require('./routes/signin-page')
+// app.use('/sign-in', signinRouter)
+
+var registrationRouter = require('./routes/registration-page')
+app.use('/registration', registrationRouter)
 
 
 app.use(function (req, res, next) {
@@ -57,6 +64,8 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 app.listen(port, () => {
 
