@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express');
+var logger = require('morgan');
 const req = require('express/lib/request');
 var path = require('path');
 const bodyParser = require('body-parser')
@@ -7,7 +8,7 @@ var createError = require('http-errors');
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 // const User = require('../models/user')
-const bcrypt = require('bcryptjs')
+
 
 const app = express()
 const port = 3000
@@ -22,6 +23,7 @@ app.use(express.urlencoded({
   extended: false
 }));
 app.use(cookieParser())
+app.use(logger('dev'));
 
 app.use(express.static(path.join(__dirname, 'public/images')));
 app.use(express.static(path.join(__dirname, 'public/css')));
@@ -43,8 +45,8 @@ app.use('/', indexRouter)
 var homeRouter = require('./routes/home-page');
 app.use('/home', homeRouter)
 
-// var signinRouter = require('./routes/signin-page')
-// app.use('/sign-in', signinRouter)
+var signinRouter = require('./routes/signin-page')
+app.use('/sign-in', signinRouter)
 
 var registrationRouter = require('./routes/registration-page')
 app.use('/registration', registrationRouter)

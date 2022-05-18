@@ -7,19 +7,6 @@ const passport = require('passport');
 const User = require('../models/user')
 const mongoose = require('mongoose')
 
-const initializePassport = require('../passportConfig');
-
-initializePassport(passport);
-
-router.use(session({
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: false
-}));
-router.use(passport.initialize());
-router.use(passport.session());
-
-router.use(flash())
 
 mongoose.connect("mongodb+srv://subham:subham@cluster0.ojwma.mongodb.net/trek-or-trip", {
         useNewUrlParser: true,
@@ -108,14 +95,12 @@ router.post('/', async (req, res) => {
             success.push({
                 message: "You are now registered, please login"
             })
-            res.render('signin.ejs', {
-                success
-            })
+            res.redirect('/sign-in')
         } else {
             errors.push({
                 message: "Email is already registered"
             })
-            res.render('registration.ejs', {
+            res.render('registration', {
                 errors
             })
         }
