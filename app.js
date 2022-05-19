@@ -69,6 +69,9 @@ app.use('/search', searchRouter)
 var browseRouter = require('./routes/browse-page')
 app.use('/browse', browseRouter)
 
+var placebrowseRouter = require('./routes/placebrowse')
+app.use('/category', placebrowseRouter)
+
 
 app.get("/logout", async (req, res) => {
 
