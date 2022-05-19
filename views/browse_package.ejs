@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="browse-package.css">
+    </head>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(2, 2, 2);
+        }
+
+        body {
+            font-family: poppins;
+        }
+
+        header {
+            width: 100%;
+            height: 15vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #head {
+            max-width: 140rem;
+            width: 95%;
+            margin: 0 auto;
+            background-color: rgb(162, 205, 223);
+            border-radius: 5px;
+            height: 100%;
+            text-decoration: none;
+        }
+
+        .menu-toggle {
+            position: fixed;
+            top: 2.5rem;
+            right: 2.5rem;
+            /* color: #ecd5d5; */
+            /* font-size: 3rem; */
+            cursor: pointer;
+            z-index: 1000;
+            display: none;
+            /* font-size: 10px; */
+        }
+
+        nav {
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-transform: uppercase;
+            font-size: 1rem;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .brand {
+            font-size: 1.8rem;
+            font-weight: 300;
+            transform: translateX(-100rem);
+            animation: slideIn .5s forwards;
+        }
+
+        .brand {
+            font-style: oblique;
+
+        }
+
+        .brand span {
+            color: crimson;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            list-style: none;
+            transform: translateX(100rem);
+            animation: slideIn .5s forwards;
+        }
+
+        nav ul li:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        nav ul li:nth-child(2) {
+            animation-delay: .5s;
+        }
+
+        nav ul li:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        nav ul li:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        nav ul li a {
+            padding: 1rem 0;
+            margin: 0 3rem;
+            position: relative;
+            letter-spacing: 2px;
+        }
+
+        nav ul li a:last-child {
+            margin-right: 0;
+        }
+
+        nav ul li a::before,
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: crimson;
+            left: 0;
+            transform: scaleX(0);
+            transition: all .5s;
+        }
+
+        nav ul li a::before {
+            top: 0;
+            transform-origin: left;
+        }
+
+        nav ul li a::after {
+            bottom: 0;
+            transform-origin: right;
+        }
+
+
+        nav ul li a:hover::before,
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+        }
+
+        @keyframes slideIn {
+            from {}
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                padding-top: 0;
+                display: none;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                height: 100vh;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin-top: 5rem;
+            }
+
+            nav ul li a {
+                margin: 0;
+                font-size: 2.5rem;
+            }
+
+            .brand {
+                font-size: 5rem;
+            }
+
+            .overlay.menu-open,
+            nav.menu-open {
+                display: flex;
+                transform: scale(1);
+                opacity: 1;
+            }
+
+        }
+
+        /* * {
+        margin: 0;
+        padding: 0;
+    } */
+
+        /* body {
+        padding: 20px;
+        user-select: none;
+        background: #eee;
+    } */
+
+        [type=radio] {
+            display: none;
+        }
+
+
+        .slide {
+            height: 35vw;
+            position: relative;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .slide label {
+            margin: auto;
+            width: 60%;
+            height: 100%;
+            border-radius: 4px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+
+        #s1:checked~#slide4,
+        #s2:checked~#slide5,
+        #s3:checked~#slide1,
+        #s4:checked~#slide2,
+        #s5:checked~#slide3 {
+            box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
+            transform: translate3d(-30%, 0, -200px);
+        }
+
+        #s1:checked~#slide5,
+        #s2:checked~#slide1,
+        #s3:checked~#slide2,
+        #s4:checked~#slide3,
+        #s5:checked~#slide4 {
+            box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .3), 0 2px 2px 0 rgba(0, 0, 0, .2);
+            transform: translate3d(-15%, 0, -100px);
+        }
+
+        #s1:checked~#slide1,
+        #s2:checked~#slide2,
+        #s3:checked~#slide2,
+        #s4:checked~#slide4,
+        #s5:checked~#slide5 {
+            box-shadow: 0 13px 25px 0 rgba(0, 0, 0, .3), 0 11px 7px 0 rgba(0, 0, 0, .19);
+            transform: translate3d(0, 0, 0);
+        }
+
+        #s1:checked~#slide2,
+        #s2:checked~#slide3,
+        #s3:checked~#slide3,
+        #s4:checked~#slide5,
+        #s5:checked~#slide1 {
+            box-shadow: 0 6px 18px 0 rgba(0, 0, 0, .3), 0 2px 2px 0 rgba(0, 0, 0, .2);
+            transform: translate3d(15%, 0, -100px);
+        }
+
+        #s1:checked~#slide3,
+        #s2:checked~#slide4,
+        #s3:checked~#slide5,
+        #s4:checked~#slide1,
+        #s5:checked~#slide2 {
+            box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
+            transform: translate3d(30%, 0, -200px);
+        }
+
+        /* #about {
+	margin-top: 35px;
+	font-size: 1.6rem;
+	font-style: oblique;
+}
+
+#about h1 {
+	text-transform: uppercase;
+}
+
+.content {
+	display: flex;
+	margin-top: 20px;
+}
+
+.para {
+	margin-left: 15px;
+}
+
+#img2 {
+	margin-left: 30px;
+} */
+        .about-section {
+
+            /* background: url(g55.jpg) no-repeat left; */
+            background-size: 70%;
+            background: linear-gradient(rgba(207, 124, 124, 0.747), rgba(235, 189, 189, 0.822));
+            background-color: #fdfdfd;
+            overflow: hidden;
+            padding: 80px 0;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+
+
+
+        .inner-container {
+            width: 70%;
+            float: right;
+            background-color: #fdfdfd;
+            padding: 150px;
+        }
+
+        .inner-container h1 {
+            margin-bottom: 30px;
+            font-size: 30px;
+            font-weight: 800;
+        }
+
+        .border {
+            height: 4px;
+            width: 150px;
+            background-color: rgb(248, 68, 28);
+        }
+
+        .text {
+            font-size: 13px;
+            color: #545454;
+            line-height: 30px;
+            text-align: justify;
+            margin-bottom: 40px;
+        }
+
+        button {
+            border: none;
+            padding: 8px 15px;
+            background-color: rgb(248, 68, 28);
+            color: #fff;
+        }
+
+        button:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .inner-container {
+                padding: 100px;
+            }
+        }
+
+        @media screen and (max-width:1000px) {
+            .about-section {
+                background-size: 100%;
+                padding: 85px 40px;
+            }
+
+            .inner-container {
+                width: 90%;
+            }
+        }
+
+        @media screen and (max-width:600px) {
+            .about-section {
+                padding: 0;
+            }
+
+            .inner-container {
+                padding: 60px;
+            }
+        }
+
+        .about-section1 {
+
+            /* background: url(background123.jpeg) no-repeat right; */
+
+            background-size: 70%;
+            background: linear-gradient(rgba(207, 124, 124, 0.747), rgba(235, 189, 189, 0.822));
+
+            background-color: #fdfdfd;
+            overflow: hidden;
+            padding: 80px 0;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+
+        .inner-container1 {
+            width: 70%;
+            float: left;
+            background-color: #fdfdfd;
+            padding: 150px;
+        }
+
+        .inner-container1 h1 {
+            margin-bottom: 30px;
+            font-size: 30px;
+            font-weight: 800;
+        }
+
+        .border {
+            height: 4px;
+            width: 150px;
+            background-color: rgb(248, 68, 28);
+        }
+
+        ul {
+            font-size: 13px;
+            color: #545454;
+            line-height: 30px;
+            text-align: justify;
+            margin-bottom: 40px;
+            font-family: 200;
+        }
+
+        button {
+            border: none;
+            padding: 8px 15px;
+            background-color: rgb(248, 68, 28);
+            color: #fff;
+        }
+
+        button:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .inner-container1 {
+                padding: 80px;
+            }
+        }
+
+        @media screen and (max-width:1000px) {
+            .about-section1 {
+                background-size: 100%;
+                padding: 90px 40px;
+            }
+
+            .inner-container1 {
+                width: 90%;
+            }
+        }
+
+        @media screen and (max-width:600px) {
+            .about-section1 {
+                padding: 0;
+            }
+
+            .inner-container1 {
+                padding: 60px;
+            }
+        }
+
+        .btn {
+            border: none;
+            display: flex;
+            justify-content: center;
+            margin-top: 4%;
+            margin-bottom: 4%;
+        }
+
+        .btn button {
+            border: none;
+            padding: 10px 25px;
+            background-color: rgb(248, 68, 28);
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn button:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+
+
+    <%- include('./includes/header.ejs'); %>
+
+    <body>
+        <% for (let data of placedetails) { %>
+        <br>
+        <h1 style="text-align: center; font-family: monospace; font-size: 42px;">
+            <%- data.place %>
+        </h1>
+        <br> <br>
+        <div class="slide">
+            <input type="radio" name="slider" id="s1">
+            <input type="radio" name="slider" id="s2">
+            <input type="radio" name="slider" id="s3" checked>
+            <input type="radio" name="slider" id="s4">
+            <input type="radio" name="slider" id="s5">
+
+            <label for="s1" id="slide1">
+                <img src="/<%- data.img1 %>" height="100%" width="100%">
+            </label>
+
+            <label for="s2" id="slide2">
+                <img src="/<%- data.img2 %>" height="100%" width="100%">
+            </label>
+
+            <label for="s3" id="slide3">
+                <img src="/<%- data.img3 %>" height="100%" width="100%">
+            </label>
+
+            <label for="s4" id="slide4">
+                <img src="/<%- data.img4 %>" height="100%" width="100%">
+            </label>
+
+            <label for="s5" id="slide5">
+                <img src="/<%- data.img5 %>" height="100%" width="100%">
+            </label>
+
+        </div>
+
+
+        <!-- <div class="container" id="about">
+            <h1>
+                About this Package
+            </h1>
+            <hr>
+
+            <div class="content">
+
+                <div class="imgBx">
+                    <img src="https://images.ctfassets.net/hrltx12pl8hq/61DiwECVps74bWazF88Cy9/2cc9411d050b8ca50530cf97b3e51c96/Image_Cover.jpg?fit=fill&w=480&h=270"
+                        alt="">
+                </div>
+
+                <div class="para">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore ex dignissimos itaque molestias
+                    cupiditate, dicta ut. Assumenda perferendis facere aspernatur doloribus aliquam corporis ex
+                    repudiandae
+                    asperiores delectus veniam! Quasi temporibus, nam laboriosam, sequi nostrum nobis quam rem numquam
+                    officiis at mollitia accusantium excepturi sunt? Dolore possimus mollitia earum laborum dicta.
+                </div>
+
+            </div>
+        </div>
+        <div class="container" id="about">
+            <h1>
+                Details you need to know
+            </h1>
+            <hr>
+
+            <div class="content">
+
+                <div class="para">
+                    <ul>
+                        <li>
+                            Locations - Lorem ipsum dolor sit amet consectetur adipisicing elit. A, ullam.
+                        </li>
+                        <li>
+                            Hotels - Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, quaerat.
+                        </li>
+                        <li>
+                            stay - lorem10
+                        </li>
+                        <li>
+                            sight seeing - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore,
+                            asperiores.
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="imgBx" id="img2">
+                    <img src="https://images.ctfassets.net/hrltx12pl8hq/61DiwECVps74bWazF88Cy9/2cc9411d050b8ca50530cf97b3e51c96/Image_Cover.jpg?fit=fill&w=480&h=270"
+                        alt="">
+                </div>
+
+            </div>
+        </div> -->
+        <div>
+            <div class="about-section">
+                <div class="img">
+                    <img src="../public/images/g55.jpg" alt="" srcset="">
+                </div>
+                <div class="inner-container">
+                    <h1>
+                        About this Package
+                        <div class="border"></div>
+                    </h1>
+                    <p class="text">
+                        <%- data.about %>
+                    </p>
+
+
+                </div>
+            </div>
+
+            <div class="about-section1">
+                <div class="inner-container1">
+                    <h1>
+                        Details you need to know
+                        <div class="border"></div>
+                    </h1>
+                    <!-- <p class="text1">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium libero, cumque sapiente neque qui vero fugiat officiis consectetur voluptatum? Temporibus voluptate, velit rerum odio expedita provident molestias recusandae magni reprehenderit?
+                    </p> -->
+                    <ul>
+                        <li>
+                            <h2>
+                                Amount - <%- data.amount %> + GST
+                            </h2>
+                        </li>
+                        <li>
+                            <h2>
+                                Facility - <%- data.facility %>
+                            </h2>
+                        </li>
+                        <li>
+                            <h2>
+                                stay - <%- data.stay%>
+                            </h2>
+                        </li>
+                        <li>
+                            sight seeing - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore,
+                            asperiores.
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="btn"><button onclick="location.href = '#';">Book Now</button>
+        </div>
+        <script>
+            var open = document.getElementById('hamburger');
+            var changeIcon = true;
+
+            open.addEventListener("click", function () {
+
+                var overlay = document.querySelector('.overlay');
+                var nav = document.querySelector('nav');
+                var icon = document.querySelector('.menu-toggle i');
+
+                overlay.classList.toggle("menu-open");
+                nav.classList.toggle("menu-open");
+
+                if (changeIcon) {
+                    icon.classList.remove("fa-bars");
+                    icon.classList.add("fa-times");
+
+                    changeIcon = false;
+                } else {
+                    icon.classList.remove("fa-times");
+                    icon.classList.add("fa-bars");
+                    changeIcon = true;
+                }
+            });
+
+        </script>
+
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <% } %>
+    </body>
+    <%- include('./includes/footer.ejs'); %>
+
+</html>
