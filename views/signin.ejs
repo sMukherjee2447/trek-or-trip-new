@@ -26,6 +26,17 @@
                 <section class="col-12 col-sm-6 col-md-3">
                     <form class="form-container" action="/sign-in" method="post">
                         <h1>Sign In</h1>
+
+                        <h5 class="text-danger" style="font-style: italic; font-size: small">
+
+                            <% if(typeof errors !=='undefined' ) { %>
+                            <% errors.forEach(error => { %>
+                            <%= error.message %>
+                            <% }) %>
+                            <% } %>
+
+                        </h5>
+
                         <div class="form-group">
                             <label for="exampleInputEmail">Email Address</label>
                             <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"

@@ -30,17 +30,17 @@ router.post('/', async (req, res) => {
     })
     let errors = []
 
-    const find_user = await User.findOne({
+    const user = await User.findOne({
         email: uname
     })
-    if (find_user) {
-        const isMatch = bcrypt.compare(password, find_user.hashed_pass1)
+    if (user) {
+        const isMatch = bcrypt.compare(password, user.hashed_pass1)
 
         const login_token = await User.generateAuthToken()
         console.log("signin token-->", login_token)
 
         res.cookie("JWT", login_token, {
-            expires: new Date(Date.now() + 30000),
+            expires: new Date(Date.now() + 300000000),
             httpOnly: true
         })
         if (isMatch) {
@@ -55,7 +55,7 @@ router.post('/', async (req, res) => {
         }
     } else {
         errors.push({
-            message: "User not found"
+            message: "User not found, Please register first"
         })
         res.render('signin.ejs', {
             errors

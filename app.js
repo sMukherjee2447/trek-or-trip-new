@@ -62,25 +62,12 @@ app.use('/sign-in', signinRouter)
 
 var registrationRouter = require('./routes/registration-page')
 app.use('/registration', registrationRouter)
-// const auth = async (req, res, next) => {
-//   try {
-//     const token = req.cookies.JWT
-//     const verifyUser = jwt.verify(token, process.env.JWT_SECRET)
-//     console.log(verifyUser);
 
-//     const user_data = await User.findOne({
-//       register_token: verifyUser.token
-//     })
-//     console.log(user_data)
+var searchRouter = require('./routes/search-page')
+app.use('/search', searchRouter)
 
-//     req.token = token
-//     req.user_data = user_data
-
-//     next()
-//   } catch (error) {
-//     res.status(401).send(error)
-//   }
-// }
+var browseRouter = require('./routes/browse-page')
+app.use('/browse', browseRouter)
 
 
 app.get("/logout", async (req, res) => {
@@ -102,7 +89,7 @@ app.get("/logout", async (req, res) => {
 
     // await req.user_data.save()
 
-    res.redirect('/')
+    res.redirect('/sign-in')
 
   } catch (error) {
     res.status(500).send(error)

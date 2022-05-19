@@ -28,10 +28,65 @@
     </head>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+        /* ===========================
+   ====== Search Box ====== 
+   =========================== */
 
-        body {
-            font-family: poppins;
+        .search {
+            /* border: 2px solid #2b47e7; */
+            overflow: auto;
+            /* border-radius: 5px; */
+            /* -moz-border-radius: 5px; */
+            /* -webkit-border-radius: 5px; */
+            height: 60px;
+            width: 100%;
+        }
+
+        .search_bar {
+            background-color: #09b6fa81;
+            border-radius: 10px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+        }
+
+        .search input[type="text"] {
+            border: 0px;
+            width: 67%;
+            padding: 10px 10px;
+        }
+
+        .search input[type="text"]:focus {
+            outline: 0;
+        }
+
+        .search input[type="submit"] {
+            border: 0px;
+            background: none;
+            background-color: #405feb;
+            color: rgb(149, 202, 245);
+            float: right;
+            padding: 10px;
+            /* border-radius-top-right: 5px; */
+            -moz-border-radius-top-right: 5px;
+            -webkit-border-radius-top-right: 5px;
+            /* border-radius-bottom-right: 5px; */
+            -moz-border-radius-bottom-right: 5px;
+            -webkit-border-radius-bottom-right: 5px;
+            cursor: pointer;
+        }
+
+        /* ===========================
+   ====== Medua Query for Search Box ====== 
+   =========================== */
+
+        @media only screen and (min-width : 150px) and (max-width : 780px) {
+
+
+            .search {
+                width: 95%;
+                margin: 0 auto;
+            }
+
         }
 
     </style>
@@ -116,9 +171,9 @@
                                                         <h2>Search Your Destination</h2>
 
                                                         <div class="search">
-                                                            <form action="/place_search" class="search-form">
-                                                                <input type="text"
-                                                                    placeholder="Search your favourite destination"
+                                                            <form method="get" action="" class="search-form">
+                                                                <input type="text" class="search_bar"
+                                                                    placeholder="Search your favourite destination Here"
                                                                     name="search_text" required>
                                                                 <div class="about-btn travel-mrt-0 pull-right">
                                                                     <button class="about-view travel-btn" type="submit"

@@ -1,9 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const bcrypt = require('bcryptjs');
-const session = require('express-session');
-const flash = require('express-flash');
-const passport = require('passport');
 const User = require('../models/user')
 const mongoose = require('mongoose')
 
@@ -91,14 +88,10 @@ router.post('/', async (req, res) => {
                 register_token
             })
             console.log("new user created-->>", new_user)
-            let success = []
-            success.push({
-                message: "You are now registered, please login"
-            })
             res.redirect('/sign-in')
         } else {
             errors.push({
-                message: "Email is already registered"
+                message: "Email is already registered, please login"
             })
             res.render('registration', {
                 errors
