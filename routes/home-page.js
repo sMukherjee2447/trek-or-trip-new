@@ -77,7 +77,11 @@ router.get('/', async (req, res) => {
     if (req.query.search_text) {
         const regex = new RegExp(escapeRegex(req.query.search_text), 'gi');
         search_data = await database.collection('place').find({
-            "place": regex
+            $or: [{
+                "place": regex
+            }, {
+                "package_name": regex
+            }]
         }).toArray((err, results_search_data) => {
             if (err) {
                 console.log(err)
