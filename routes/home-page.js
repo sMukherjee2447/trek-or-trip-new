@@ -93,24 +93,8 @@ router.get('/', async (req, res) => {
         })
 
     }
-    // else {
-    //     all_browse_data = await database.collection('place').find({}).toArray((err, result_all_browse_data) => {
-    //         if (err) throw err
-    //         console.log("This is all browse data: ", result_all_browse_data)
-    //         res.render('browse', {
-    //             all_browse_data: result_all_browse_data
-    //         })
-    //     })
-    // }
+
 })
-
-// router.post('/', async (req, res) => {
-//     let search_text = req.query.search_text
-
-//     console.log("this is the search text-->>", search_text)
-
-//     // let search_data =
-// })
 
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");

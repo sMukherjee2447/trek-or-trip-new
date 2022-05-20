@@ -75,6 +75,9 @@ app.use('/category', placebrowseRouter)
 var placedetailsRouter = require('./routes/browsepackage-page')
 app.use('/packages', placedetailsRouter)
 
+var allReviewRouter = require('./routes/allReview')
+app.use('/all-reviews', allReviewRouter)
+
 
 app.get("/logout", async (req, res) => {
 
