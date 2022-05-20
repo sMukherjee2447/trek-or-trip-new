@@ -102,21 +102,5 @@ router.post('/', async (req, res) => {
 
 });
 
-// function checkAuthenticated(req, res, next) {
-//     if (req.isAuthenticated()) {
-//         return res.redirect('/home');
-//     }
-//     next();
-// }
-
-// function checkNotAuthenticated(req, res, next) {
-//     if (req.isAuthenticated()) {
-//         return next();
-//     }
-
-//     res.redirect('/sign-in');
-// }
-
-
 
 module.exports = router;

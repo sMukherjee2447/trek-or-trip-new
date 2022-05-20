@@ -1,6 +1,4 @@
 const mongoose = require('mongoose')
-// const jwt = require('jsonwebtoken')
-// const res = require('express/lib/response')
 
 const reviewSchema = new mongoose.Schema({
     Customer: {

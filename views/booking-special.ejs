@@ -12,7 +12,6 @@
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
@@ -21,7 +20,6 @@
         }
 
         .menu {
-
             display: block;
             position: relative;
             cursor: pointer;
@@ -31,15 +29,12 @@
         }
 
         #Gender {
-
-
             display: block;
             position: relative;
             cursor: pointer;
             width: 40%;
             height: 50px;
             border-radius: 5px;
-
         }
 
         #place {
@@ -75,49 +70,39 @@
                     <h2><span class="text-primary"><b>
                                 <%- data.place %>
                             </b></span></h2>
-
                     <div class="mt-3">
                         <form action="/booking" method="post">
                             <div>
                                 <label for="name" class="form-label">Your name</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
-
                                 <div class="mt-3">
                                     <label for="email" class="form-label">Email address</label>
                                     <input type="email" class="form-control" id="email" name="email" required>
                                 </div>
-
                                 <div class="mt-3">
                                     <label for="location" class="form-label">Address</label>
                                     <textarea type="text" class="form-control" id="location" name="address"
                                         aria-required="true"></textarea>
                                 </div>
-
                                 <div class="mt-3">
                                     <label for="number" class="form-label">Phone Number</label>
                                     <input type="text" class="form-control" id="location" name="number" required></text>
                                 </div>
-
                                 <div class="mt-3">
                                     <label for="number" class="form-label">Alternate Phone Number</label>
                                     <input type="text" class="form-control" id="location" name="number2"
                                         required></text>
                                 </div>
-
                                 <div class="mt-3">
                                     <label for="visit" class="form-label">your package</label>
-                                    <!-- <input type="radio" class="form-control" id="visit" name="visit" value="visit"> -->
                                     <select name="visit" id="place" class="menu">
                                         <option>
                                             <%- data.place%>
                                         </option>
-
                                     </select>
                                 </div>
-
                                 <div class="mt-3">
                                     <label for="Gender" class="form-label">Choose your Gender</label>
-                                    <!-- <input type="radio" class="form-control" id="visit" name="gender" value="male"> -->
                                     <select name="gender" id="Gender" class="menu">
                                         <option value="male">Male</option>
                                         <option value="female">female</option>
@@ -130,7 +115,6 @@
                                 </div>
                                 <div class="mt-3">
                                     <label for="amount" class="form-label">Amount</label>
-                                    <!-- <input type="radio" class="form-control" id="visit" name="visit" value="visit"> -->
                                     <select name="amount" id="visit" class="menu">
                                         <option>
                                             <%- data.amount%>
@@ -150,13 +134,11 @@
                     </div>
                 </div>
                 <div class="col-sm-6 mt-5">
-                    <!-- <img src="https://cdn.pixabay.com/photo/2017/09/29/23/44/feedback-2800867_960_720.png" class="img-fluid"></src> -->
                     <img src="https://i.ibb.co/djjRfYf/Hotel-Booking-rafiki.png" class="img-fluid"></src>
                 </div>
                 <% } %>
             </div>
         </div>
-
         <%- include('./includes/footer.ejs'); %>
 
 </html>

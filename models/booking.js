@@ -1,6 +1,4 @@
 const mongoose = require('mongoose')
-// const jwt = require('jsonwebtoken')
-// const res = require('express/lib/response')
 
 const bookingSchema = new mongoose.Schema({
     name: {
