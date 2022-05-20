@@ -78,6 +78,9 @@ app.use('/packages', placedetailsRouter)
 var allReviewRouter = require('./routes/allReview')
 app.use('/all-reviews', allReviewRouter)
 
+var reviewRouter = require('./routes/review')
+app.use('/review', reviewRouter)
+
 
 app.get("/logout", async (req, res) => {
 

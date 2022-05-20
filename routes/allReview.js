@@ -10,7 +10,7 @@ const connection = MongoClient.connect('mongodb+srv://subham:subham@cluster0.ojw
     if (error)
         throw error
     database = result.db('trek-or-trip')
-    console.log('Database Connected to browse-page.js')
+    console.log('Database Connected to all reviews.js')
 })
 
 router.get('/', (req, res) => {
