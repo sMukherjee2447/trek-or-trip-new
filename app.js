@@ -90,6 +90,21 @@ app.use('/contact', contactRouter)
 var aboutRouter = require('./routes/about-us')
 app.use('/about', aboutRouter)
 
+var faqRouter = require('./routes/faq')
+app.use('/faq', faqRouter)
+
+var comingsoonRouter = require('./routes/comingsoon')
+app.use('/comingsoon', comingsoonRouter)
+
+var bookingRouter = require('./routes/booking-special')
+app.use('/booking', bookingRouter)
+
+var confirmationRouter = require('./routes/confirmation')
+app.use('/confirmation', confirmationRouter)
+
+var bookingsRouter = require('./routes/booking-gallery')
+app.use('/bookings', bookingsRouter)
+
 
 app.get("/logout", async (req, res) => {
 
