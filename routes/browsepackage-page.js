@@ -25,6 +25,7 @@ router.get('/:place', async (req, res) => {
             throw err
         }
         console.log("This is the data from placedetails-->", result_browsepackage)
+
         res.render('browse_package', {
             placedetails: result_browsepackage
         })

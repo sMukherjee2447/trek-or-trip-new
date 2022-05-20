@@ -81,6 +81,15 @@ app.use('/all-reviews', allReviewRouter)
 var reviewRouter = require('./routes/review')
 app.use('/review', reviewRouter)
 
+var gallerydetailsRouter = require('./routes/gallery-package_browse-page')
+app.use('/package', gallerydetailsRouter)
+
+var contactRouter = require("./routes/contact-us")
+app.use('/contact', contactRouter)
+
+var aboutRouter = require('./routes/about-us')
+app.use('/about', aboutRouter)
+
 
 app.get("/logout", async (req, res) => {
 
