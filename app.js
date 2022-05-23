@@ -105,6 +105,9 @@ app.use('/confirmation', confirmationRouter)
 var bookingsRouter = require('./routes/booking-gallery')
 app.use('/bookings', bookingsRouter)
 
+var editprofileRoute = require('./routes/editprofile')
+app.use('/editprofile', editprofileRoute)
+
 
 app.get("/logout", async (req, res) => {
 

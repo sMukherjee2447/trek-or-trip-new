@@ -71,7 +71,8 @@ router.post('/', async (req, res) => {
         message: "Booking registered successfully"
     })
     res.render('confirmation', {
-        success
+        success,
+        title: 'Booking'
     })
 })
 

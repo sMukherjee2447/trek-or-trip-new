@@ -20,7 +20,8 @@ router.get('/', (req, res) => {
         }
         console.log("The feedback data are-->", result_feedback)
         res.render('allReview', {
-            feedback_data: result_feedback
+            feedback_data: result_feedback,
+            title: "Read all reviews"
         })
     })
 
