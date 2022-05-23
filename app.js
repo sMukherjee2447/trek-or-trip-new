@@ -108,6 +108,9 @@ app.use('/bookings', bookingsRouter)
 var editprofileRoute = require('./routes/editprofile')
 app.use('/editprofile', editprofileRoute)
 
+var myprofileRoute = require('./routes/myprofile')
+app.use('/MyProfile', myprofileRoute)
+
 
 app.get("/logout", async (req, res) => {
 
