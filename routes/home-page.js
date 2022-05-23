@@ -55,16 +55,21 @@ router.get('/', async (req, res) => {
             feedback_data = await database.collection('feedback').find({}).toArray(async (err, result_feedbackData) => {
                 if (err) throw err
 
-                special_package_data = await database.collection('special_package').find({}).toArray((err, result_specialPackage) => {
+                special_package_data = await database.collection('special_package').find({}).toArray(async (err, result_specialPackage) => {
                     if (err) throw err
 
-                    res.render('home-page.ejs', {
-                        title: 'Trek or Trip',
-                        pageSlug: 'trek or trip',
-                        place_data: result_placeData,
-                        all_place_data: result_allPlaceData,
-                        feedback_data: result_feedbackData,
-                        special_package_data: result_specialPackage
+                    user_data = await database.collection('users').find({}).toArray((err, result_user_data) => {
+                        if (err) throw err
+
+                        res.render('home-page.ejs', {
+                            title: 'Trek or Trip',
+                            pageSlug: 'trek or trip',
+                            place_data: result_placeData,
+                            all_place_data: result_allPlaceData,
+                            feedback_data: result_feedbackData,
+                            special_package_data: result_specialPackage,
+                            user_data: result_user_data
+                        })
                     })
                 })
             })
