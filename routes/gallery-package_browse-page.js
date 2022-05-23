@@ -27,7 +27,8 @@ router.get('/:package_id', async (req, res) => {
         console.log("This is the data from placedetails-->", result_gallery_browsepackage)
 
         res.render('gallery-package_browse', {
-            gallerydetails: result_gallery_browsepackage
+            gallerydetails: result_gallery_browsepackage,
+            title: 'Browse'
         })
     })
 })

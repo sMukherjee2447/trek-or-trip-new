@@ -25,7 +25,8 @@ router.get('/:id', async (req, res) => {
         }
         console.log("This is the data from placebrowse-->", result_browse_package)
         res.render('placebrowse', {
-            place_data: result_browse_package
+            place_data: result_browse_package,
+            title: 'Browse'
         })
     })
 })

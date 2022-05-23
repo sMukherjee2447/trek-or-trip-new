@@ -15,7 +15,9 @@ const connection = MongoClient.connect('mongodb+srv://subham:subham@cluster0.ojw
 })
 
 router.get('/', (req, res) => {
-    res.render('contact')
+    res.render('contact', {
+        title: 'Contact Us'
+    })
 })
 
 router.post('/', async (req, res) => {
