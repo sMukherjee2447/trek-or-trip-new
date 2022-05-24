@@ -45,20 +45,32 @@ router.post('/', upload.single('image'), async (req, res) => {
     let {
         fname,
         lname,
+        age,
+        username,
         email,
         gender,
         location,
         address,
+        zip,
+        country,
+        code,
+        phone,
         pass,
         pass2,
     } = req.body;
     console.log({
         fname,
         lname,
+        age,
+        username,
         email,
         gender,
         location,
         address,
+        zip,
+        country,
+        code,
+        phone,
         pass,
         pass2,
 
@@ -67,7 +79,7 @@ router.post('/', upload.single('image'), async (req, res) => {
     let errors = [];
 
 
-    if (!fname || !lname || !email || !pass || !pass2) {
+    if (!fname || !lname || !email || !pass || !pass2 || !age) {
         errors.push({
             message: "Please enter all the fields"
         });
@@ -99,7 +111,7 @@ router.post('/', upload.single('image'), async (req, res) => {
         })
 
         const user = await User.findOne({
-            email
+            username
         })
 
         if (!user) {
@@ -112,6 +124,12 @@ router.post('/', upload.single('image'), async (req, res) => {
             const new_user = await User.create({
                 fname,
                 lname,
+                age,
+                country,
+                code,
+                phone,
+                username,
+                zip,
                 email,
                 gender,
                 location,

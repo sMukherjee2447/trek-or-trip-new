@@ -12,6 +12,7 @@
 
     <body>
         <% for (let data of user_data) { %>
+
         <div class="main-content">
             <!-- Header -->
             <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
@@ -57,7 +58,7 @@
                                     <br>
                                     <h3>
                                         <%-data.fname%> <%-data.lname%><span class="font-weight-light">,
-                                            age</span>
+                                            <%-data.age%></span>
                                     </h3>
                                     <div class="h5 font-weight-300">
                                         <i class="ni location_pin mr-2"></i><%-data.location%>
@@ -93,7 +94,7 @@
                                                 <div class="form-group focused">
                                                     <label class="form-control-label"
                                                         for="input-username">Username</label>
-                                                    <h3>user name</h3>
+                                                    <h3><%-data.username%></h3>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -145,14 +146,14 @@
                                                 <div class="form-group focused">
                                                     <label class="form-control-label"
                                                         for="input-country">Country</label>
-                                                    <h3>country</h3>
+                                                    <h3><%-data.country%></h3>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-country">Postal
                                                         code</label>
-                                                    <h3>postal code</h3>
+                                                    <h3><%-data.zip%></h3>
                                                 </div>
                                             </div>
                                         </div>

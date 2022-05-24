@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     let errors = []
 
     const user = await User.findOne({
-        email: uname
+        username: uname
     })
 
     console.log("This is the user-->", user)

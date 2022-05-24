@@ -1,112 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Register Yourself</title>
-        <link rel="stylesheet" href="registration.css">
-    </head>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+	<head>
+		<meta charset="utf-8">
+		<title>Register Yourself</title>
+		<!-- Mobile Specific Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<!-- Font-->
+		<link rel="stylesheet" type="text/css" href="css/montserrat-font.css">
+		<link rel="stylesheet" type="text/css"
+			href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+		<!-- Main Style Css -->
+		<link rel="stylesheet" href="registration.css" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-        body {
-            font-family: poppins;
-        }
+	</head>
 
-    </style>
+	<body class="form-v10">
+		<div class="page-content">
+			<div class="form-v10-content">
+				<h5 class="text-danger" style="font-style: italic; font-size: small">
 
-    <body>
-        <div class="registration">
-            <div class="panel panel-primary">
-                <div class="panel-heading text-center">
-                    <h1>Register Yourself</h1>
-                </div>
-                <h5 class="text-danger" style="font-style: italic; font-size: small">
+					<% if(typeof errors !=='undefined' ) { %>
+					<ul style="margin-left: 25px;">
+						<% errors.forEach(error => { %>
+						<li class="text-danger">
+							<%= error.message %>
+							<% }) %>
+						</li>
+					</ul>
+					<% } %>
 
-                    <% if(typeof errors !=='undefined' ) { %>
-                    <ul style="margin-left: 25px;">
-                        <% errors.forEach(error => { %>
-                        <li class="text-danger">
-                            <%= error.message %>
-                            <% }) %>
-                        </li>
-                    </ul>
-                    <% } %>
+				</h5>
+				<form class="form-detail" action="/registration" method="post" id="myform"
+					enctype="multipart/form-data">
+					<div class="form-left">
+						<h2>General Infomation</h2>
+						<div class="form-row">
+						</div>
+						<div class="form-group">
+							<div class="form-row form-row-1">
+								<input type="text" name="fname" id="first_name" class="input-text"
+									placeholder="First Name" required>
+							</div>
+							<div class="form-row form-row-2">
+								<input type="text" name="lname" id="last_name" class="input-text"
+									placeholder="Last Name" required>
+							</div>
+							<div class="form-row form-row-2">
+								<input type="text" name="age" id="age" class="input-text" placeholder="Your age"
+									required>
+							</div>
+						</div>
+						<div class="form-row">
+							<input type="text" name="username" class="company" id="company"
+								placeholder="Select an unique username" required>
+						</div>
+						<div class="form-group">
+							<div class="form-row form-row-3">
+								<input type="text" name="location" class="business" id="Location" placeholder="location"
+									required>
+							</div>
+							<div class="form-row form-row-4">
+								<select name="gender">
+									<option value="gender">Gender</option>
+									<option value="male">Male</option>
+									<option value="Female">Female</option>
+									<option value="not">Prefer not to say</option>
+								</select>
+								<span class="select-btn">
+									<i class="zmdi zmdi-chevron-down"></i>
+								</span>
+							</div>
+						</div>
+						<div class="form-row">
+							<input type="password" name="pass" class="company" id="company" placeholder="Password"
+								required>
+						</div>
+						<div class="form-row">
+							<input type="password" name="pass2" class="company" id="company"
+								placeholder="Confirm Password" required>
+						</div>
+						<div class="form-row">
+							<label for="image">Upload</label>
+							<input type="file" name="image" id="image" placeholder="Upload your image">
+						</div>
+					</div>
+					<div class="form-right">
+						<h2>Contact Details</h2>
+						<div class="form-row">
+							<input type="text" name="address" class="additional" id="additional" placeholder="address"
+								required>
+						</div>
+						<div class="form-group">
+							<div class="form-row form-row-1">
+								<input type="text" name="zip" class="zip" id="zip" placeholder="Zip Code" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="form-row form-row-1">
+								<input type="text" name="country" class="zip" id="zip" placeholder="Country" required>
+							</div>
+						</div>
 
-                </h5>
+						<div class="form-group">
+							<div class="form-row form-row-1">
+								<input type="text" name="code" class="code" id="code" placeholder="Code +" required>
+							</div>
+							<div class="form-row form-row-2">
+								<input type="text" name="phone" class="phone" id="phone" placeholder="Phone Number"
+									required>
+							</div>
+						</div>
+						<div class="form-row">
+							<input type="email" name="email" id="your_email" class="input-text" required
+								placeholder="Your Email">
+						</div>
 
-                <div class="panel-body">
-                    <form action="/registration" id="register" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="FirstName" style="margin-left: 17px;">First Name</label>
-                            <input type="text" class="form-control" id="firstName" name="fname" required />
-                            <label for="LastName" style="margin-left: 60px;">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" name="lname" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="email" style="margin-left: 60px;">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" required />
-                            <label for="gender" style="margin-left: 95px;">Gender</label>
-                            <input type="text" class="form-control" id="gender" name="gender" required />
-                        </div>
+						<div class="form-row-last">
+							<button class="btn btn-success" type="submit" value="Register">submit</button>
+						</div>
+						<div class="panel-footer-back" style="margin-left: 200px; color: #fff;">
+							<small>ALready a member? <span class="sn"><a href="/sign-in"
+										style="text-decoration: none; color:#fff">Sign in here</a></span></small>
+						</div>
+						<div class="panel-footer text-right" style="margin-left: 250px; color: #fff;">
 
-                        <div class="form-group">
-                            <label for="location" style="margin-left: 30px;">Location</label>
-                            <input type="text" class="form-control" id="location" name="location" required />
-                            <label for="address" style="margin-left: 90px;">Address</label>
-                            <input type="textarea" class="form-control" id="address" name="address" required />
-
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="pass"
-                                style="margin-left: 20px;" required />
-                            <label for="password2">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirmPass" name="pass2"
-                                style="margin-left: 1px;" required />
-
-                        </div>
-                        <div class="form-group">
-                            <label for="image" style="margin-left: 150px;">Upload your Image</label>
-                            <input type="file" name="image" id="image">
-                        </div>
-                        <button type="Submit" class="btn btn-primary" id="register" value="Register"
-                            style="margin-left: 420px;"> Submit </button>
-                    </form>
-
-                </div>
-                <div class="panel-footer-back" style="margin-left: 390px;">
-                    <small>ALready a member? <span class="sn"><a href="/sign-in">Sign in here</a></span></small>
-                </div>
-                <div class="panel-footer text-right" style="margin-left: 470px;">
-
-                    <small> &copy; Trek or trip</small>
+							<small> &copy; Trek or trip</small>
 
 
-                </div>
-            </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
-        </script>
+						</div>
+					</div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script>
-            $("#register").submit(function (event) {
-                alert("You have been Registered successfully");
-            })
+				</form>
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+			integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+			crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script>
+			$("#myform").submit(function (event) {
+				alert("You have been Registered successfully");
+			})
 
-        </script>
-    </body>
+		</script>
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>

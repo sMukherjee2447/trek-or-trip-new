@@ -45,6 +45,30 @@ const userSchema = new mongoose.Schema({
     },
     filename: {
         type: String,
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    age: {
+        type: String,
+        required: true
+    },
+    zip: {
+        type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    code: {
+        type: String,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true
     }
 }, {
     collection: 'users'
