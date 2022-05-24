@@ -30,9 +30,22 @@ const userSchema = new mongoose.Schema({
     register_token: {
         type: String,
         required: true
+    },
+    gender: {
+        type: String,
+        required: true
+    },
+    location: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String,
+        required: true
+    },
+    filename: {
+        type: String,
     }
-
-
 }, {
     collection: 'users'
 })

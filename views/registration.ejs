@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><%= title %></title>
+        <title>Register Yourself</title>
         <link rel="stylesheet" href="registration.css">
     </head>
     <style>
@@ -38,41 +38,49 @@
                 </h5>
 
                 <div class="panel-body">
-                    <form action="/registration" id="register" method="POST">
+                    <form action="/registration" id="register" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="FirstName">First Name</label>
+                            <label for="FirstName" style="margin-left: 17px;">First Name</label>
                             <input type="text" class="form-control" id="firstName" name="fname" required />
-
+                            <label for="LastName" style="margin-left: 60px;">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" name="lname" required />
                         </div>
                         <div class="form-group">
-                            <label for="LastName">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" name="lname" />
-
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email" style="margin-left: 60px;">Email</label>
                             <input type="text" class="form-control" id="email" name="email" required />
+                            <label for="gender" style="margin-left: 95px;">Gender</label>
+                            <input type="text" class="form-control" id="gender" name="gender" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location" style="margin-left: 30px;">Location</label>
+                            <input type="text" class="form-control" id="location" name="location" required />
+                            <label for="address" style="margin-left: 90px;">Address</label>
+                            <input type="textarea" class="form-control" id="address" name="address" required />
 
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="pass" required />
+                            <input type="password" class="form-control" id="password" name="pass"
+                                style="margin-left: 20px;" required />
+                            <label for="password2">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPass" name="pass2"
+                                style="margin-left: 1px;" required />
 
                         </div>
                         <div class="form-group">
-                            <label for="password2">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirmPass" name="pass2" required />
-
+                            <label for="image" style="margin-left: 150px;">Upload your Image</label>
+                            <input type="file" name="image" id="image">
                         </div>
-
-                        <button type="Submit" class="btn btn-primary" id="register" value="Register"> Submit </button>
+                        <button type="Submit" class="btn btn-primary" id="register" value="Register"
+                            style="margin-left: 420px;"> Submit </button>
                     </form>
 
                 </div>
-                <div class="panel-footer-back">
+                <div class="panel-footer-back" style="margin-left: 390px;">
                     <small>ALready a member? <span class="sn"><a href="/sign-in">Sign in here</a></span></small>
                 </div>
-                <div class="panel-footer text-right">
+                <div class="panel-footer text-right" style="margin-left: 470px;">
 
                     <small> &copy; Trek or trip</small>
 

@@ -7,22 +7,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-        <link rel="stylesheet" href="myprofile.css">
+        <link rel="stylesheet" href="/myprofile.css">
     </head>
 
-
     <body>
+        <% for (let data of user_data) { %>
         <div class="main-content">
             <!-- Header -->
             <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-                style="min-height: 600px; background-image: url('f1.jpg'); background-size: cover; background-position: center top;">
+                style="min-height: 600px; background-image: url('/<%-data.filename%>'); background-size: cover; background-position: center top;">
                 <!-- Mask -->
                 <span class="mask bg-gradient-default opacity-8"></span>
                 <!-- Header container -->
                 <div class="container-fluid d-flex align-items-center">
                     <div class="row">
                         <div class="col-lg-7 col-md-10">
-                            <h1 class="display-2 text-white">Hello Jesse</h1>
+                            <h1 class="display-2 text-white">Hello <%-data.fname%></h1>
                             <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've
                                 made
                                 with your work and manage your projects or assigned tasks</p>
@@ -40,7 +40,7 @@
                                 <div class="col-lg-3 order-lg-2">
                                     <div class="card-profile-image">
                                         <a href="#">
-                                            <img src="f1.jpg" class="rounded-circle">
+                                            <img src="/<%-data.filename%>" class="rounded-circle">
                                         </a>
                                     </div>
                                 </div>
@@ -56,13 +56,14 @@
                                     <br>
                                     <br>
                                     <h3>
-                                        name<span class="font-weight-light">, age</span>
+                                        <%-data.fname%> <%-data.lname%><span class="font-weight-light">,
+                                            age</span>
                                     </h3>
                                     <div class="h5 font-weight-300">
-                                        <i class="ni location_pin mr-2"></i>location
+                                        <i class="ni location_pin mr-2"></i><%-data.location%>
                                     </div>
                                     <div class="h5 mt-4">
-                                        <i class="ni business_briefcase-24 mr-2"></i>address / feedback
+                                        <i class="ni business_briefcase-24 mr-2"></i><%-data.address%>
                                     </div>
                                     <!-- <div>
                                     <i class="ni education_hat mr-2"></i>University of Computer Science
@@ -99,7 +100,7 @@
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-email">Email
                                                         address</label>
-                                                    <h3>email</h3>
+                                                    <h3><%-data.email%></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -108,14 +109,14 @@
                                                 <div class="form-group focused">
                                                     <label class="form-control-label" for="input-first-name">First
                                                         name</label>
-                                                    <h3>first name</h3>
+                                                    <h3><%-data.fname%></h3>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group focused">
                                                     <label class="form-control-label" for="input-last-name">Last
                                                         name</label>
-                                                    <h3>last name</h3>
+                                                    <h3><%-data.lname%></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -129,7 +130,7 @@
                                                 <div class="form-group focused">
                                                     <label class="form-control-label"
                                                         for="input-address">Address</label>
-                                                    <h3>address</h3>
+                                                    <h3><%-data.address%></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -137,7 +138,7 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group focused">
                                                     <label class="form-control-label" for="input-city">City</label>
-                                                    <h3>city</h3>
+                                                    <h3><%-data.location%></h3>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
@@ -172,6 +173,7 @@
                 </div>
             </div>
         </div>
+        <% } %>
         <footer class="footer">
             <div class="row align-items-center justify-content-xl-between">
                 <div class="col-xl-6 m-auto text-center">

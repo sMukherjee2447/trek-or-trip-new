@@ -37,6 +37,7 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public/images')));
 app.use(express.static(path.join(__dirname, 'public/css')));
 app.use(express.static(path.join(__dirname, 'public/javascripts')));
+app.use(express.static(path.join(__dirname, 'public/uploads')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -109,7 +110,7 @@ var editprofileRoute = require('./routes/editprofile')
 app.use('/editprofile', editprofileRoute)
 
 var myprofileRoute = require('./routes/myprofile')
-app.use('/MyProfile', myprofileRoute)
+app.use('/myprofile', myprofileRoute)
 
 
 app.get("/logout", async (req, res) => {

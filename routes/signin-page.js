@@ -33,10 +33,12 @@ router.post('/', async (req, res) => {
     const user = await User.findOne({
         email: uname
     })
-    if (user) {
-        const isMatch = bcrypt.compare(password, user.hashed_pass1)
 
-        const login_token = await User.generateAuthToken()
+    console.log("This is the user-->", user)
+    if (user) {
+        const isMatch = bcrypt.compareSync(password, user.hashed_pass1)
+
+        const login_token = user.register_token
         console.log("signin token-->", login_token)
 
         res.cookie("JWT", login_token, {

@@ -32,14 +32,14 @@ const connection = MongoClient.connect('mongodb+srv://subham:subham@cluster0.ojw
 
 router.get('/', async (req, res) => {
     try {
-        const token = req.cookies.JWT
-        const verifyUser = jwt.verify(token, process.env.JWT_SECRET)
-        console.log(verifyUser)
+        var token = req.cookies.JWT
+        var verifyUser = jwt.verify(token, process.env.JWT_SECRET)
+        console.log("This is verify user==>", verifyUser)
 
         const user_data = await User.findOne({
             register_token: verifyUser.token
         })
-        console.log(user_data)
+        console.log("Found data with token:", user_data)
         req.token = token
         req.user_data = user_data
     } catch (error) {
@@ -58,8 +58,11 @@ router.get('/', async (req, res) => {
                 special_package_data = await database.collection('special_package').find({}).toArray(async (err, result_specialPackage) => {
                     if (err) throw err
 
-                    user_data = await database.collection('users').find({}).toArray((err, result_user_data) => {
+                    user_data = await database.collection('users').find({
+                        "register_token": req.cookies.JWT
+                    }).toArray((err, result_user_data) => {
                         if (err) throw err
+                        console.log("Data from register token==>>", result_user_data)
 
                         res.render('home-page.ejs', {
                             title: 'Trek or Trip',
