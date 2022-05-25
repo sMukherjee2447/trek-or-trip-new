@@ -1,198 +1,157 @@
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
-<style>
-    body {
-        margin-top: 20px;
-        background: #f5f5f5;
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-    /**
-    * Panels
-    */
-    /*** General styles ***/
-    .panel {
-        box-shadow: none;
-    }
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profile</title>
 
-    .panel-heading {
-        border-bottom: 0;
-    }
+        <!-- ===== ===== Custom Css ===== ===== -->
+        <link rel="stylesheet" href="editprofile.css">
+        <link rel="stylesheet" href="responsiveeditprofile.css">
 
-    .panel-title {
-        font-size: 17px;
-    }
+        <!-- ===== ===== Remix Font Icons Cdn ===== ===== -->
+        <link rel="stylesheet" href="fonts/remixicon.css">
+    </head>
 
-    .panel-title>small {
-        font-size: .75em;
-        color: #999999;
-    }
+    <body>
+        <!-- ===== ===== Body Main-Background ===== ===== -->
+        <span class="main_bg"></span>
 
-    .panel-body *:first-child {
-        margin-top: 0;
-    }
 
-    .panel-footer {
-        border-top: 0;
-    }
+        <!-- ===== ===== Main-Container ===== ===== -->
+        <div class="container">
+            <% for(let data of user_data) { %>
 
-    .panel-default>.panel-heading {
-        color: #333333;
-        background-color: transparent;
-        border-color: rgba(0, 0, 0, 0.07);
-    }
-
-    form label {
-        color: #999999;
-        font-weight: 400;
-    }
-
-    .form-horizontal .form-group {
-        margin-left: -15px;
-        margin-right: -15px;
-    }
-
-    @media (min-width: 768px) {
-        .form-horizontal .control-label {
-            text-align: right;
-            margin-bottom: 0;
-            padding-top: 7px;
-        }
-    }
-
-    .profile__contact-info-icon {
-        float: left;
-        font-size: 18px;
-        color: #999999;
-    }
-
-    .profile__contact-info-body {
-        overflow: hidden;
-        padding-left: 20px;
-        color: #999999;
-    }
-
-    .profile-avatar {
-        width: 200px;
-        position: relative;
-        margin: 0px auto;
-        margin-top: 196px;
-        border: 4px solid #f3f3f3;
-    }
-
-</style>
-
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container bootstrap snippets bootdeys">
-    <div class="row">
-        <div class="col-xs-12 col-sm-9">
-            <form class="form-horizontal">
-                <div class="panel panel-default">
-                    <div class="panel-body text-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-circle profile-avatar"
-                            alt="User avatar">
-                    </div>
+            <!-- ===== ===== Header/Navbar ===== ===== -->
+            <header>
+                <div class="brandLogo">
+                    <a href="/home">Trek or Trip</a>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">User info</h4>
+            </header>
+
+
+            <!-- ===== ===== User Main-Profile ===== ===== -->
+            <section class="userProfile card">
+                <div class="profile">
+                    <figure><img src="/<%- data.filename %>" alt="profile" width="250px" height="250px"></figure>
+                </div>
+            </section>
+
+
+            <!-- ===== ===== Work & Skills Section ===== ===== -->
+            <section class="work_skills card">
+
+                <!-- ===== ===== Work Contaienr ===== ===== -->
+                <div class="work">
+                    <h1 class="heading">About</h1>
+                    <div class="primary">
+                        <h1>About User</h1>
+                        <p>about</p>
                     </div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Location</label>
-                            <div class="col-sm-10">
-                                <select class="form-control">
-                                    <option selected="">Select country</option>
-                                    <option>Belgium</option>
-                                    <option>Canada</option>
-                                    <option>Denmark</option>
-                                    <option>Estonia</option>
-                                    <option>France</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Company name</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Position</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ===== ===== User Details Sections ===== ===== -->
+            <section class="userDetails card">
+                <div class="userName">
+                    <h1 class="name"><%- data.fname %> <%- data.lname %></h1>
+                    <div class="map">
+                        <i class="ri-map-pin-fill ri" style="margin-left: 150px;"></i>
+                        <span><%-data.location%>, <%-data.country%></span>
                     </div>
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">Contact info</h4>
+                <div class="rank">
+                    <h1 class="heading">Ratings</h1>
+                    <span>will be given after star rating management</span>
+                    <div class="rating">
+                        <i class="ri-star-fill rate"></i>
+                        <i class="ri-star-fill rate"></i>
+                        <i class="ri-star-fill rate"></i>
+                        <i class="ri-star-fill rate"></i>
+                        <i class="ri-star-fill rate underrate"></i>
                     </div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Work number</label>
-                            <div class="col-sm-10">
-                                <input type="tel" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Mobile number</label>
-                            <div class="col-sm-10">
-                                <input type="tel" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">E-mail address</label>
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Work address</label>
-                            <div class="col-sm-10">
-                                <textarea rows="3" class="form-control"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+                <!-- 
+            <div class="btns">
+                <ul>
+                    <li class="sendMsg">
+                        <i class="ri-chat-4-fill ri"></i>
+                        <a href="#">Send Message</a>
+                    </li>
+
+                    <li class="sendMsg active">
+                        <i class="ri-check-fill ri"></i>
+                        <a href="#">Contacts</a>
+                    </li>
+
+                    <li class="sendMsg">
+                        <a href="#">Report User</a>
+                    </li>
+                </ul>
+            </div> -->
+            </section>
+
+
+            <!-- ===== ===== Timeline & About Sections ===== ===== -->
+            <section class="timeline_about card">
+                <div class="tabs">
+                    <ul>
+                        <li class="about active">
+                            <i class="ri-user-3-fill ri"></i>
+                            <span>About</span>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">Security</h4>
-                    </div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Current password</label>
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">New password</label>
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="checkbox_1">
-                                    <label for="checkbox_1">Make this account public</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <button type="reset" class="btn btn-default">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="contact_Info">
+                    <h1 class="heading">Contact Information</h1>
+                    <ul>
+                        <li class="phone">
+                            <h1 class="label">Phone:</h1>
+                            <span class="info"><%-data.code%> <%-data.phone%></span>
+                        </li>
+
+                        <li class="address">
+                            <h1 class="label">Address:</h1>
+                            <span class="info"><%-data.address%></span>
+                        </li>
+
+                        <li class="email">
+                            <h1 class="label">E-mail:</h1>
+                            <span class="info"><%-data.email%>></span>
+                        </li>
+
+                        <!-- <li class="site">
+                            <h1 class="label">Site:</h1>
+                            <span class="info">www.rsmarquetech.com</span>
+                        </li> -->
+                    </ul>
                 </div>
-            </form>
+
+                <div class="basic_info">
+                    <h1 class="heading">Basic Information</h1>
+                    <ul>
+                        <li class="birthday">
+                            <h1 class="label">Birthday:</h1>
+                            <span class="info"><%-data.dob%></span>
+                        </li>
+
+                        <li class="sex">
+                            <h1 class="label">Gender:</h1>
+                            <span class="info"><%-data.gender%></span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <% } %>
         </div>
-    </div>
-</div>
+
+    </body>
+
+</html>

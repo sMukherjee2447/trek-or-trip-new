@@ -54,6 +54,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    dob: {
+        type: String,
+        required: true
+    },
     zip: {
         type: String,
         required: true

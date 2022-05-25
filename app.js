@@ -1,6 +1,5 @@
 require('dotenv').config()
 const express = require('express');
-var logger = require('morgan');
 const req = require('express/lib/request');
 var path = require('path');
 const bodyParser = require('body-parser')
@@ -9,6 +8,7 @@ const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const User = require('./models/user')
 const jwt = require('jsonwebtoken')
+
 
 mongoose.connect("mongodb+srv://subham:subham@cluster0.ojwma.mongodb.net/trek-or-trip", {
     useNewUrlParser: true,
@@ -32,7 +32,6 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser())
 app.use(express.json())
-app.use(logger('dev'));
 
 app.use(express.static(path.join(__dirname, 'public/images')));
 app.use(express.static(path.join(__dirname, 'public/css')));
@@ -43,8 +42,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-
-
 
 
 // app.get('/', (req, res) => {
@@ -115,7 +112,10 @@ app.use('/myprofile', myprofileRoute)
 var notfoundRoute = require('./routes/404')
 app.use('/notfound', notfoundRoute)
 
-var loginfirstRoute = require('./routes/login-first')
+var loginfirstRoute = require('./routes/login-first');
+const {
+  access
+} = require('fs');
 app.use('/loginfirst', loginfirstRoute)
 
 
@@ -158,7 +158,7 @@ app.use(function (err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  // res.status(err.status || 500);
+  res.status(err.status || 500);
   res.redirect('/notfound')
 });
 
