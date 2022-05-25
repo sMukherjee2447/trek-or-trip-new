@@ -43,7 +43,7 @@ router.get('/', async (req, res) => {
         req.token = token
         req.user_data = user_data
     } catch (error) {
-        res.render('/loginfirst')
+        res.redirect('/loginfirst')
     }
 
     place_data = await database.collection('Place_Table').find({}).toArray(async (err, result_placeData) => {

@@ -141,7 +141,8 @@ app.get("/logout", async (req, res) => {
     res.redirect('/sign-in')
 
   } catch (error) {
-    res.status(500).send(error)
+    // res.status(500).send(error)
+    res.render('/loginfirst')
   }
 })
 
