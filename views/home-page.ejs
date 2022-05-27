@@ -437,12 +437,12 @@
                 </div>
 
             </div>
-            <form>
+            <form action="/home" , method="post" id="subscribe">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                         <div class="custom-input-group">
 
-                            <input type="email" class="form-control" placeholder="Enter your Email Here" name="email">
+                            <input type="email" class="form-control" placeholder="Enter your Email Here" name="mail">
                             <button class="appsLand-btn subscribe-btn" type="submit">Subscribe</button>
                             <div class="clearfix"></div>
                             <i class="fa fa-envelope"></i>
@@ -498,7 +498,12 @@
                 toggleMenu.classList.toggle('active')
             }
 
+            $("#subscribe").submit(function (event) {
+                alert("Your Message has been recorded successfully, we will reach back to you shortly");
+            })
+
         </script>
+
 
     </body>
 
