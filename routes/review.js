@@ -1,22 +1,25 @@
 const express = require('express')
 const reviewDb = require('../models/review')
 const router = express.Router()
-const MongoClient = require('mongodb').MongoClient
+// const MongoClient = require('mongodb').MongoClient
 const nodemailer = require('nodemailer')
 const {
     google
 } = require('googleapis')
 
-var database
+// var database
 
-const connection = MongoClient.connect('mongodb+srv://subham:subham@cluster0.ojwma.mongodb.net/test', {
-    useNewUrlParser: true
-}, (error, result) => {
-    if (error)
-        throw error
-    database = result.db('trek-or-trip')
-    console.log('Database Connected to review.js')
-})
+// const connection = MongoClient.connect('mongodb+srv://subham:subham@cluster0.ojwma.mongodb.net/test', {
+//     useNewUrlParser: true
+// }, (error, result) => {
+//     if (error)
+//         throw error
+//     database = result.db('trek-or-trip')
+//     console.log('Database Connected to review.js')
+// })
+
+const connect = require('../db-connect')
+connect()
 
 router.get('/', (req, res) => {
     res.render('review', {
@@ -25,6 +28,19 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', async (req, res) => {
+    let token = req.cookies.JWT
+    console.log("JWT-->", token)
+    const filename = await database.collection('users').find({
+        "register_token": token
+    }, {
+        "filename": 1,
+        "_id": 1
+    })
+    console.log("filename-->", filename)
+
+
+
+
     let {
         name,
         email,
@@ -91,7 +107,8 @@ router.post('/', async (req, res) => {
         email,
         location,
         place,
-        review
+        review,
+
     })
     console.log("New Review recorded -->".new_review)
     res.redirect('/all-reviews')

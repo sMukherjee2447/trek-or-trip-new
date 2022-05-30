@@ -9,9 +9,8 @@ const connect = (req, res, next) => {
         if (error)
             throw error
         database = result.db('trek-or-trip')
-        console.log('Database Connected to db-connecte')
+        console.log('Database Connected to db-connected')
     })
-    next()
 }
 
 module.exports = connect

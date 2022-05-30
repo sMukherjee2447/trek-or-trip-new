@@ -1,15 +1,18 @@
 const express = require('express')
 const router = express.Router()
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const User = require('../models/user')
 
-mongoose.connect("mongodb+srv://subham:subham@cluster0.ojwma.mongodb.net/trek-or-trip", {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-    .then(() => console.log('connected on login-page'))
-    .catch(e => console.log(e));
+// mongoose.connect("mongodb+srv://subham:subham@cluster0.ojwma.mongodb.net/trek-or-trip", {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true
+//     })
+//     .then(() => console.log('connected on login-page'))
+//     .catch(e => console.log(e));
+
+const connect = require('../db-connect')
+connect()
 
 router.get('/', (req, res) => {
     res.render("signin", {

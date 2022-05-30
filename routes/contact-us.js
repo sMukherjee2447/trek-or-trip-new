@@ -1,22 +1,26 @@
 const express = require('express')
 const router = express.Router()
 const contactDb = require("../models/contact-us")
-const MongoClient = require('mongodb').MongoClient
+// const MongoClient = require('mongodb').MongoClient
 const nodemailer = require('nodemailer')
 const {
     google
 } = require('googleapis')
 
-var database
+// var database
 
-const connection = MongoClient.connect('mongodb+srv://subham:subham@cluster0.ojwma.mongodb.net/test', {
-    useNewUrlParser: true
-}, (error, result) => {
-    if (error)
-        throw error
-    database = result.db('trek-or-trip')
-    console.log('Database Connected to contact.js')
-})
+// const connection = MongoClient.connect('mongodb+srv://subham:subham@cluster0.ojwma.mongodb.net/test', {
+//     useNewUrlParser: true
+// }, (error, result) => {
+//     if (error)
+//         throw error
+//     database = result.db('trek-or-trip')
+//     console.log('Database Connected to contact.js')
+// })
+
+
+const connect = require('../db-connect')
+connect()
 
 router.get('/', (req, res) => {
     res.render('contact', {

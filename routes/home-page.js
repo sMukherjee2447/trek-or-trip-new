@@ -1,6 +1,6 @@
 require('dotenv').config()
 const express = require('express')
-const MongoClient = require('mongodb').MongoClient
+// const MongoClient = require('mongodb').MongoClient
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
@@ -24,16 +24,19 @@ app.use(function (req, res, next) {
 });
 
 var router = express.Router()
-var database
 
-const connection = MongoClient.connect('mongodb+srv://subham:subham@cluster0.ojwma.mongodb.net/test', {
-    useNewUrlParser: true
-}, (error, result) => {
-    if (error)
-        throw error
-    database = result.db('trek-or-trip')
-    console.log('Database Connected to home-page')
-})
+const connect = require('../db-connect')
+connect()
+// var database
+
+// const connection = MongoClient.connect('mongodb+srv://subham:subham@cluster0.ojwma.mongodb.net/test', {
+//     useNewUrlParser: true
+// }, (error, result) => {
+//     if (error)
+//         throw error
+//     database = result.db('trek-or-trip')
+//     console.log('Database Connected to home-page')
+// })
 
 router.get('/', async (req, res) => {
     try {
