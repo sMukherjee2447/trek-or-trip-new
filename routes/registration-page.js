@@ -2,20 +2,12 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/user')
-// const mongoose = require('mongoose')
 const multer = require('multer')
 const nodemailer = require('nodemailer')
 const {
     google
 } = require('googleapis')
 
-
-// mongoose.connect("mongodb+srv://subham:subham@cluster0.ojwma.mongodb.net/trek-or-trip", {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true
-//     })
-//     .then(() => console.log('connected on registration-page'))
-//     .catch(e => console.log(e));
 
 const connect = require('../db-connect')
 connect()

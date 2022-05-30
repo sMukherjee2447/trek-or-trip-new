@@ -39,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public/images')));
 app.use(express.static(path.join(__dirname, 'public/css')));
 app.use(express.static(path.join(__dirname, 'public/javascripts')));
 app.use(express.static(path.join(__dirname, 'public/uploads')));
+app.use(express.static(path.join(__dirname, 'public/vendor')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -113,6 +114,9 @@ app.use('/myprofile', myprofileRoute)
 
 var notfoundRoute = require('./routes/404')
 app.use('/notfound', notfoundRoute)
+
+var adminRoute = require('./routes/admin-login')
+app.use('/admin', adminRoute)
 
 var loginfirstRoute = require('./routes/login-first');
 const {
