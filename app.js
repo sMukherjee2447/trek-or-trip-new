@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public/images')));
 app.use(express.static(path.join(__dirname, 'public/css')));
 app.use(express.static(path.join(__dirname, 'public/javascripts')));
 app.use(express.static(path.join(__dirname, 'public/uploads')));
-app.use(express.static(path.join(__dirname, 'public/vendor')));
+// app.use(express.static(path.join(__dirname, 'public/vendor')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -118,6 +118,9 @@ app.use('/notfound', notfoundRoute)
 var adminRoute = require('./routes/admin-login')
 app.use('/admin', adminRoute)
 
+var dashboardRoute = require('./routes/dashboard')
+app.use('/dashboard', dashboardRoute)
+
 var loginfirstRoute = require('./routes/login-first');
 const {
   access
@@ -144,7 +147,7 @@ app.get("/logout", async (req, res) => {
 
     // await req.user_data.save()
 
-    res.redirect('/sign-in')
+    res.redirect('/')
 
   } catch (error) {
     // res.status(500).send(error)

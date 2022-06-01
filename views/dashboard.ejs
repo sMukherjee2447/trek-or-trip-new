@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+            integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.css"
+            integrity="sha512-1hsteeq9xTM5CX6NsXiJu3Y/g+tj+IIwtZMtTisemEv3hx+S9ngaW4nryrNcPM4xGzINcKbwUJtojslX2KG+DQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="dashboard.css">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="Trekortrip.png" alt="" style="width: 40px;">
+                    <span class="logoname">Trek or Trip</span>
+                </div>
+
+                <div class="searchbox">
+                    <form method="post" action="">
+                        <input type="text" placeholder="Search">
+                        <i class="fa fa-search"></i>
+                    </form>
+                </div>
+                <div class="navitem">
+                    <div class="lang">
+                        <select class="langauge">
+                            <option value="">English</option>
+                            <option value="">hindi</option>
+                        </select>
+                    </div>
+                    <div class="icons">
+                        <ul>
+                            <li><i class="fa fa-envelope"></i></li>
+                            <li><i class="fa fa-bell"></i></li>
+                        </ul>
+                    </div>
+
+                    <div class="account">
+                        <img width="25px" height="25px" src="f1.jpg" alt="">
+
+                        <span class="name">Subham Mukherjee</span>
+                        <span class="username">@subham2447</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-body">
+                <div class="sidebar">
+                    <ul>
+                        <li class="dashboard">
+                            <i class="fa-solid fa-gauge mr-3"></i>
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-upload"></i>
+                            <a href="#">Upload</a>
+                        </li>
+                        <li>
+                            <i class="fa-light fa-clipboard-medical"></i>
+                            <a href="#">All Bookings</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-message"></i>
+                            <a href="#">Messages</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-arrows-down-to-people"></i>
+                            <a href="#">Team</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="main-body">
+                    <div class="headtitle">
+                        <span class="greeting">Hii Subham, </span>
+                        <h2 class="overview">Overview</h2>
+                    </div>
+
+                    <div class="cards">
+                        <div class="row row-1">
+                            <div class="col">
+                                <div class="balance-card">
+                                    <h3 class="cardtitle">Total Bookings</h3>
+                                    <h2 class="balance">100</h2>
+                                    <span class="balancestatus">+15%</span>
+                                    <img width="60px" height="60px" src="book.png" alt="">
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="latest-activity">
+                                    <h3 class="cardtitle">Latest Customer</h3>
+                                    <img width="30%" height="30%" src="customer.png" alt="">
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="debit-card">
+                                    <h3 class="cardtitle">My Card</h3>
+                                    <h3 class="cardnumber">Role</h3>
+                                    <h3 class="cardholder">name</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-2">
+                            <div class="col">
+                                <div class="total-invoice">
+                                    <h3 class="cardtitle">Total Invoice</h3>
+                                    <span class="t-i">520</span>
+                                    <span class="status">+12%</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="paid-invoice">
+                                    <h3 class="cardtitle">Paid Invoice</h3>
+                                    <span class="p-i">210</span>
+                                    <span class="status">85%
+                                        <i class="fa fa-line-chart"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="unpaid-invoice">
+                                    <h3 class="cardtitle">
+                                        Unpaid Invoice
+                                    </h3>
+                                    <span class="u-i">65</span>
+                                    <span class="status">15%
+                                        <i class="fa fa-line-chart"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="invoice-sent">
+                                    <h3 class="cardtitle">Invoice Sent</h3>
+                                    <span class="i-s">120</span>
+                                    <span class="status"><i class="fa fa-check"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
