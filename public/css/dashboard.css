@@ -75,6 +75,7 @@ body {
     line-height: 30px;
     margin-left: 80px;
     margin-top: 10px;
+    /* display: inline-block; */
 }
 
 .searchbox input {
@@ -91,6 +92,11 @@ body {
     outline: none;
     border-radius: 30px;
     transition: .3s;
+    /* display: inline-block; */
+}
+
+.upload {
+    display: inline-block;
 }
 
 .searchbox input:focus {
@@ -178,7 +184,7 @@ body {
 }
 
 .container-body .sidebar {
-    margin: 100px 0 500px 20px;
+    margin: 65px 0 500px 20px;
     background: rgba(255, 255, 255, .6);
     border-radius: 14px;
     padding: 10px;
@@ -379,35 +385,17 @@ body {
 
 .modal-btn:checked+label,
 .modal-btn:not(:checked)+label {
-    position: relative;
     font-family: "Poppins", sans-serif;
-    font-weight: 500;
     font-size: 15px;
-    line-height: 2;
-    height: 40px;
-    transition: all 200ms linear;
     border-radius: 5px;
     width: 170px;
     letter-spacing: 1px;
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
     align-items: center;
-    -webkit-justify-content: center;
-    -moz-justify-content: center;
-    -ms-justify-content: center;
-    justify-content: center;
     -ms-flex-pack: center;
-    text-align: center;
-    -ms-flex-item-align: center;
-    align-self: center;
-    border: none;
     cursor: pointer;
-    background: transparent;
-    box-shadow: 0 12px 35px 0 rgba(16, 39, 112, 0.25);
+    background: none;
 }
 
 .modal-btn:checked+label:after,
@@ -425,7 +413,7 @@ body {
     background-color: #ffeba7;
     color: #102770;
     font-family: "unicons";
-    content: "\eac6";
+    content: "\f00d";
     box-shadow: 0 12px 25px 0 rgba(16, 39, 112, 0.25);
     transition: all 200ms linear;
     opacity: 0;
@@ -449,7 +437,7 @@ body {
 
 .modal {
     position: fixed;
-    display: block;
+    /* display: block; */
     /* display: -ms-flexbox; */
     display: flex;
     -ms-flex-wrap: wrap;
@@ -477,11 +465,11 @@ body {
 
 .modal-wrap {
     position: relative;
-    display: block;
+    display: flex;
     background-image: url('1.jpg');
     /* z-index: 2; */
-    width: 500px;
-    max-width: 1200px;
+    width: 450px;
+    /* max-width: 1500px; */
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1587,4 +1575,83 @@ body {
         top: 12px;
         left: 43%;
     }
+}
+
+
+.modal_2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* .content_2 {
+    background-color: orange;
+    z-index: 100;
+} */
+
+.modal_2 {
+    z-index: 101;
+    background-color: rgba(0, 0, 0, 0.863);
+    height: fit-content;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0s 0.5s;
+}
+
+.modal_2.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s;
+}
+
+.tab {
+    margin-top: 50px;
+}
+
+.detail {
+    margin-top: 30px;
+
+}
+
+.modal_2 h2 {
+    text-align: center;
+    font-size: 30px;
+}
+
+:root {
+    --dark: #2b2d42;
+    --light: #adb5bd;
+    --border: #dee2e6;
+    --border-btn: #edf2f4;
+}
+
+.tab {
+    font-size: 1em;
+    padding: .5em 1em;
+}
+
+#more {
+    display: none;
+}
+
+.detail td>a.btn {
+    padding: .3em 1em;
+    font-size: 1.1em;
+    margin: 0 .2em;
+}
+
+.detail td,
+.detail th {
+    padding: .75em;
+    vertical-align: top;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+.detail .thead-dark th {
+    color: #fff;
+    background-color: var(--dark);
+    border-color: #32383e;
 }

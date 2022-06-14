@@ -61,7 +61,8 @@
                         </li>
                         <li>
                             <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn" />
-                            <label for="modal-btn"><i class="fa-solid fa-upload"></i>Upload</label>
+                            <label for="modal-btn"><i class="fa-solid fa-upload"
+                                    style="margin-right: 3px;"></i>Upload</label>
                             <div class="modal">
                                 <div class="modal-wrap">
 
@@ -131,11 +132,11 @@
                                                 <input class="input_field" type="file" name="cover"
                                                     placeholder="Upload a cover picture">
                                             </div>
-                                            <div class="input">
+                                            <!-- <div class="input">
                                                 <label for="place">Upload images for gallery</label>
                                                 <input class="input_field" type="file" name="images"
                                                     placeholder="Upload images for gallery" multiple>
-                                            </div>
+                                            </div> -->
                                             <div class="input">
                                                 <label for="place">Write something interactive about the package</label>
                                                 <textarea name="about" id="text" cols="50" rows="5"></textarea>
@@ -183,6 +184,59 @@
                         <li>
                             <i class="fa-solid fa-arrows-down-to-people"></i>
                             <a href="#">Team</a>
+                        </li>
+                        <li>
+                            <a id="modal_button_2" href="#"><i class="fa-solid fa-pen-to-square"></i>Edit any
+                                package</a>
+                            <section class="modal_2"
+                                style="overflow-y: scroll; max-height:95%;  margin-top: 50px; margin-bottom:50px;">
+                                <h2>Update a package</h2>
+
+                                <form action="" method="post">
+
+                                    <table id="detail_table" class=" detail">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Place</th>
+                                                <th scope="col">Place Id</th>
+                                                <th scope="col">Package Name</th>
+                                                <th scope="col">Stay</th>
+                                                <th scope="col">Amount</th>
+                                                <th scope="col">Transportation</th>
+                                                <th scope="col">Facility</th>
+                                                <th scope="col">Package Id</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% details.reverse().forEach(details => { %>
+                                            <tr>
+                                                <th scope="row" name="place"><%= details.place%></th>
+                                                <td><%= details.placeid%></td>
+                                                <td><%= details.package_name%></td>
+                                                <td><%= details.stay%></td>
+                                                <td><%= details.amount%></td>
+                                                <td><%= details.transportation%></td>
+                                                <td><%= details.facility%></td>
+                                                <td><%= details.package_id%></td>
+                                                <td>
+                                                    <a href="" class=" btn border-shadow update">
+                                                        <span class="text-gradient">
+                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                        </span>
+                                                    </a>
+                                                    <a class="btn border-shadow delete" id="delete">
+                                                        <span class="text-gradient">
+                                                            <i class="fa-solid fa-user-slash"></i>
+                                                        </span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <% }) %>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </section>
                         </li>
                     </ul>
                 </div>
@@ -266,15 +320,48 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
 
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+        <script src="../public/javascripts/paging.js"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
             integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
         <script>
             $("#myform").submit(function (event) {
                 alert("Data uploaded successfully");
             })
 
+            $("#modal_button_2").click(function (e) {
+                $(".modal_2").addClass("active");
+                e.preventDefault();
+            });
+
+            $(".modal_2").click(function (e) {
+                $(".modal_2").removeClass("active");
+                e.preventDefault();
+            });
+
+            function myFunction() {
+                var dots = document.getElementById("dots");
+                var moreText = document.getElementById("more");
+                var btnText = document.getElementById("myBtn");
+
+                if (dots.style.display === "none") {
+                    dots.style.display = "inline";
+                    btnText.innerHTML = "Read more";
+                    moreText.style.display = "none";
+                } else {
+                    dots.style.display = "none";
+                    btnText.innerHTML = "Read less";
+                    moreText.style.display = "inline";
+                }
+            }
+
         </script>
+
     </body>
 
 </html>
