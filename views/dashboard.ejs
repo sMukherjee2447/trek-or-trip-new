@@ -194,7 +194,7 @@
 
                                 <form action="" method="post">
 
-                                    <table id="detail_table" class=" detail">
+                                    <table id="detail_table" class="detail">
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th scope="col">Place</th>
@@ -220,12 +220,15 @@
                                                 <td><%= details.facility%></td>
                                                 <td><%= details.package_id%></td>
                                                 <td>
-                                                    <a href="" class=" btn border-shadow update">
+                                                    <a href="/updatePackage/<%= details.package_id %>"
+                                                        class=" btn border-shadow update">
                                                         <span class="text-gradient">
                                                             <i class="fa-solid fa-pen-to-square"></i>
                                                         </span>
                                                     </a>
-                                                    <a class="btn border-shadow delete" id="delete">
+                                                    <a class="btn border-shadow delete" id="delete"
+                                                        data-id=<%= details.package_id%>>
+
                                                         <span class="text-gradient">
                                                             <i class="fa-solid fa-user-slash"></i>
                                                         </span>
@@ -329,6 +332,10 @@
             integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+            integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+            crossorigin="anonymous"></script>
+
         <script>
             $("#myform").submit(function (event) {
                 alert("Data uploaded successfully");
@@ -339,25 +346,32 @@
                 e.preventDefault();
             });
 
-            $(".modal_2").click(function (e) {
+            $(".logoname").click(function (e) {
                 $(".modal_2").removeClass("active");
                 e.preventDefault();
             });
 
-            function myFunction() {
-                var dots = document.getElementById("dots");
-                var moreText = document.getElementById("more");
-                var btnText = document.getElementById("myBtn");
+        </script>
+        <script>
+            if (window.location.pathname == "/dashboard") {
+                $ondelete = $(".detail tbody td a.delete");
+                $ondelete.click(function () {
+                    var id = $(this).attr("data-id")
+                    console.log(id)
 
-                if (dots.style.display === "none") {
-                    dots.style.display = "inline";
-                    btnText.innerHTML = "Read more";
-                    moreText.style.display = "none";
-                } else {
-                    dots.style.display = "none";
-                    btnText.innerHTML = "Read less";
-                    moreText.style.display = "inline";
-                }
+                    var request = {
+                        "url": `http://localhost:3000/dashboard/${id}`,
+                        "method": "DELETE"
+                    }
+
+                    if (confirm("Do you want to delete this record?")) {
+                        $.ajax(request).done(function (response) {
+                            alert("Data Deleted Successfully!");
+                            location.reload();
+                        })
+                    }
+
+                })
             }
 
         </script>

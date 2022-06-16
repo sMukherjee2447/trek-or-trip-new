@@ -1,6 +1,7 @@
 const express = require('express')
 const multer = require('multer')
 const upload = require('../models/upload')
+const controller = require('../controller/deletecontroller')
 
 const router = express.Router()
 
@@ -13,12 +14,12 @@ const storage = multer.diskStorage({
     }
 })
 
+const db = require('../db-connect')
+db()
+
 const uploads = multer({
     storage: storage
 })
-
-const db = require('../db-connect')
-db()
 
 router.get('/', async (req, res) => {
     const details = await database.collection('place').find({}).toArray((err, result) => {
@@ -94,5 +95,7 @@ router.post('/', uploads.single('cover'), async (req, res) => {
     }
 
 })
+
+router.delete('/:id', controller.delete)
 
 module.exports = router

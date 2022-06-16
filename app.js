@@ -121,6 +121,9 @@ app.use('/admin', adminRoute)
 var dashboardRoute = require('./routes/dashboard')
 app.use('/dashboard', dashboardRoute)
 
+var updatePackageRoute = require('./routes/updatePackage')
+app.use('/updatePackage', updatePackageRoute)
+
 var loginfirstRoute = require('./routes/login-first');
 const {
   access

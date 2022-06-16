@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Update</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+            integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <style>
+        :root {
+            --dark: #2b2d42;
+            --light: #adb5bd;
+            --border: #dee2e6;
+            --border-btn: #edf2f4;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            font-family: 'PT Sans', sans-serif;
+        }
+
+        .container {
+            max-width: 1024px;
+            margin: auto;
+        }
+
+        .tab {
+            margin-top: 50px;
+        }
+
+        .table {
+            margin-top: 30px;
+        }
+
+        .form-title {
+            margin-top: 2em;
+        }
+
+        .form-title>h2 {
+            padding: .5em 0;
+        }
+
+        .new_user {
+            max-width: 786px;
+            margin: auto;
+        }
+
+        #update_user .form-group,
+        #add_user .form-group {
+            margin: .4em 0;
+        }
+
+        #update_user .form-group input[type="text"],
+        #add_user .form-group input[type="text"] {
+            width: 100%;
+            padding: .6em 1em;
+            margin: .5em 0;
+            border: 1px solid var(--border);
+            font-family: 'Barlow', sans-serif;
+            font-size: 1em;
+            border-radius: .2em;
+        }
+
+        #update_user .form-group .radio,
+        #add_user .form-group .radio {
+            margin: 1em 2em;
+        }
+
+        #update_user .form-group .btn,
+        #add_user .form-group .btn {
+            width: 100%;
+            padding: .9em 1em;
+            border: none;
+            font-family: 'PT Sans', sans-serif;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: .2em;
+            margin: .5em 0;
+        }
+
+        #update_user .form-group .btn:hover,
+        #add_user .form-group .btn:hover {
+            background-color: var(--dark);
+            color: var(--border);
+        }
+
+    </style>
+
+    <body>
+
+        <div class="container tab">
+            <div class="filter">
+                <a href="/dashboard">
+                    <span>
+                        <i class="fa-solid fa-hand-point-left"></i> Dashboard
+                    </span>
+                </a>
+            </div>
+            <div class="form-title text-center">
+                <h3 class="text-dark">Update a package</h3>
+            </div>
+            <% for(let data of datas) { %>
+            <form method="post" id="update_user">
+                <div class="new_user">
+                    <div class="form-group">
+                        <label for="place">Enter the country</label>
+                        <input type="text" name="place" value="<%= data.place %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="placeid">Enter the country id</label>
+                        <input type="text" name="placeid" value="<%= data.placeid %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="package_name">Enter the Package Name</label>
+                        <input type="text" name="package" value="<%= data.package_name%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="package_id">Enter the Package Id</label>
+                        <input type="text" name="package_id" value="<%= data.package_id%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="stay">Enter tour duration</label>
+                        <input type="text" name="stay" value="<%= data.stay%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="Amount">Enter package price</label>
+                        <input type="text" name="amount" value="<%= data.amount%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="Transportation">Enter the transportation facility</label>
+                        <input type="text" name="transportation" value="<%= data.transportation%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="Transportation">Enter other facilities</label>
+                        <input type="text" name="facility" value="<%= data.facility%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="Cover">Update Cover Image</label>
+                        <input type="file" name="cover" value="<%= data.cover%>" enctype=multipart/form-data> </div>
+                            <div class="form-group">
+                        <label for="img">Upload gallery images</label>
+                        <input type="file" name="img" value="" enctype="multipart/form-data" multiple>
+                    </div>
+                    <label for="about" style="margin-top: 10px;">Write something interactive about the package</label>
+                    <div class="form-group">
+
+                        <textarea name="about" cols="104" rows="5"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success update">Save</button>
+                    </div>
+                </div>
+            </form>
+            <% } %>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            $("#update_user").submit(function (event) {
+                alert("Data updated Successfully!");
+            })
+
+        </script>
+    </body>
+
+</html>
